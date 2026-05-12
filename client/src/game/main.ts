@@ -12,6 +12,7 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   scene: GameScene,
   scale: {
+    mode: Phaser.Scale.RESIZE,
     width: 800,
     height: 600,
     autoCenter: Phaser.Scale.CENTER_BOTH,

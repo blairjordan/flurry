@@ -183,6 +183,10 @@ export class GameScene extends Phaser.Scene {
     }
 
     this.setupEventListeners()
+    this.scale.on("resize", this.handleResize, this)
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.scale.off("resize", this.handleResize, this)
+    })
 
     if (this.input.keyboard) {
       this.eKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E)
@@ -196,6 +200,17 @@ export class GameScene extends Phaser.Scene {
 
     this.sceneReady = true
     EventBus.emit("scene-ready")
+  }
+
+  private handleResize(gameSize: Phaser.Structs.Size) {
+    this.cameras.main.setSize(gameSize.width, gameSize.height)
+
+    if (this.observerMode) {
+      this.cameras.main.centerOn(
+        this.tilemap.widthInPixels / 2,
+        this.tilemap.heightInPixels / 2,
+      )
+    }
   }
 
   private createPlayer() {
@@ -291,6 +306,9 @@ export class GameScene extends Phaser.Scene {
   }
 
   private setupCamera() {
+    const { width, height } = this.scale.gameSize
+    this.cameras.main.setSize(width, height)
+
     if (!this.observerMode && this.playerSprite) {
       this.cameras.main.startFollow(this.playerSprite, true)
       this.cameras.main.setFollowOffset(
