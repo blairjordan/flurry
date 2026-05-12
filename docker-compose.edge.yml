@@ -1,0 +1,19 @@
+services:
+  api:
+    networks:
+      - default
+      - edge
+
+  client:
+    networks:
+      - default
+      - edge
+
+  homepage:
+    networks:
+      - default
+      - edge
+
+networks:
+  edge:
+    external: true

@@ -1,0 +1,25 @@
+fragment PlayerFields on Player {
+  nodeId
+  id
+  username
+  meta
+  isOnline
+}
+
+query GetMarkers($markerType: String!) {
+  markers(filter: { type: { equalTo: $markerType } }) {
+    nodes {
+      nodeId
+      id
+      type
+      props
+      playerMarkers {
+        nodes {
+          player {
+            ...PlayerFields
+          }
+        }
+      }
+    }
+  }
+}

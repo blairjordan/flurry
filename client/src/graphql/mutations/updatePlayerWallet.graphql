@@ -1,0 +1,9 @@
+mutation UpdatePlayerWallet($id: BigInt!, $wallets: JSON!) {
+  updatePlayer(input: { patch: { wallets: $wallets }, id: $id }) {
+    player {
+      nodeId
+      id
+      wallets
+    }
+  }
+}

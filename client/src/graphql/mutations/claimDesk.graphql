@@ -1,0 +1,5 @@
+mutation ClaimDesk($deskMarkerId: BigInt!) {
+  claimDesk(input: { deskMarkerId: $deskMarkerId }) {
+    clientMutationId
+  }
+}

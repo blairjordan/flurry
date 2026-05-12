@@ -1,0 +1,7 @@
+mutation CreateStream {
+  createStream(input: {}) {
+    stream {
+      id
+    }
+  }
+}

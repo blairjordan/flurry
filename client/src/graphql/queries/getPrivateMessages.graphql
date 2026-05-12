@@ -1,0 +1,17 @@
+query GetPrivateMessages($limit: Int = 50) {
+  messages(
+    orderBy: CREATED_AT_ASC
+    last: $limit
+    filter: { targetPlayerId: { isNull: false } }
+  ) {
+    nodes {
+      message
+      id
+      targetPlayerId
+      player {
+        id
+        username
+      }
+    }
+  }
+}

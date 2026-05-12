@@ -1,0 +1,17 @@
+mutation AcknowledgeAlert($playerAlertId: BigInt!, $response: String) {
+  acknowledgeAlert(
+    input: { playerAlertId: $playerAlertId, response: $response }
+  ) {
+    playerAlert {
+      id
+      response
+      acknowledgedAt
+      alert {
+        id
+        title
+        message
+        options
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+mutation UpdatePlayerMeta($id: BigInt!, $meta: JSON!) {
+  updatePlayer(input: { patch: { meta: $meta }, id: $id }) {
+    player {
+      nodeId
+      id
+      meta
+    }
+  }
+}

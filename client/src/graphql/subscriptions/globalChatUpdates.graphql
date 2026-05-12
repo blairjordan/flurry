@@ -1,0 +1,21 @@
+fragment MessageFields on Message {
+  nodeId
+  id
+  message
+  createdAt
+  meta
+  player {
+    id
+    username
+  }
+}
+
+subscription GlobalChatUpdates {
+  listen(topic: "global_message_received") {
+    relatedNode {
+      ... on Message {
+        ...MessageFields
+      }
+    }
+  }
+}

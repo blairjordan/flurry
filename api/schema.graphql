@@ -1,0 +1,6200 @@
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  nodeId: ID!
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    nodeId: ID!
+  ): Node
+
+  """Reads and enables pagination through a set of `Alert`."""
+  alerts(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Alert`."""
+    orderBy: [AlertsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: AlertCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: AlertFilter
+  ): AlertsConnection
+
+  """Reads and enables pagination through a set of `FeedItem`."""
+  feedItems(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `FeedItem`."""
+    orderBy: [FeedItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: FeedItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: FeedItemFilter
+  ): FeedItemsConnection
+
+  """Reads and enables pagination through a set of `Feed`."""
+  feeds(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Feed`."""
+    orderBy: [FeedsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: FeedCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: FeedFilter
+  ): FeedsConnection
+
+  """Reads and enables pagination through a set of `Item`."""
+  items(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Item`."""
+    orderBy: [ItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: ItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: ItemFilter
+  ): ItemsConnection
+
+  """Reads and enables pagination through a set of `Marker`."""
+  markers(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Marker`."""
+    orderBy: [MarkersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MarkerCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MarkerFilter
+  ): MarkersConnection
+
+  """Reads and enables pagination through a set of `Message`."""
+  messages(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MessageCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MessageFilter
+  ): MessagesConnection
+
+  """Reads and enables pagination through a set of `Pet`."""
+  pets(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Pet`."""
+    orderBy: [PetsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PetCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PetFilter
+  ): PetsConnection
+
+  """Reads and enables pagination through a set of `PlayerAlert`."""
+  playerAlerts(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerAlertCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerAlertFilter
+  ): PlayerAlertsConnection
+
+  """Reads and enables pagination through a set of `PlayerItem`."""
+  playerItems(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerItemFilter
+  ): PlayerItemsConnection
+
+  """Reads and enables pagination through a set of `PlayerMarker`."""
+  playerMarkers(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerMarkerCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerMarkerFilter
+  ): PlayerMarkersConnection
+
+  """Reads and enables pagination through a set of `PlayerPet`."""
+  playerPets(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerPetCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerPetFilter
+  ): PlayerPetsConnection
+
+  """Reads and enables pagination through a set of `PlayerSubscription`."""
+  playerSubscriptions(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerSubscriptionCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerSubscriptionFilter
+  ): PlayerSubscriptionsConnection
+
+  """Reads and enables pagination through a set of `Player`."""
+  players(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerFilter
+  ): PlayersConnection
+
+  """Reads and enables pagination through a set of `PlayersPrivate`."""
+  playersPrivates(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayersPrivate`."""
+    orderBy: [PlayersPrivatesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayersPrivateCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayersPrivateFilter
+  ): PlayersPrivatesConnection
+
+  """Reads and enables pagination through a set of `Stream`."""
+  streams(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Stream`."""
+    orderBy: [StreamsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: StreamCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: StreamFilter
+  ): StreamsConnection
+  alert(id: BigInt!): Alert
+  feedItem(id: BigInt!): FeedItem
+  feed(id: BigInt!): Feed
+  feedByPlayerIdAndName(playerId: BigInt!, name: String!): Feed
+  item(id: BigInt!): Item
+  marker(id: BigInt!): Marker
+  message(id: BigInt!): Message
+  pet(id: BigInt!): Pet
+  petBySpriteIndex(spriteIndex: Int!): Pet
+  playerAlert(id: BigInt!): PlayerAlert
+  playerItem(id: BigInt!): PlayerItem
+  playerMarker(playerId: BigInt!, markerId: BigInt!): PlayerMarker
+  playerPet(playerId: BigInt!, petId: BigInt!): PlayerPet
+  playerSubscription(playerId: BigInt!, feedId: BigInt!): PlayerSubscription
+  player(id: BigInt!): Player
+  playerByProviderId(providerId: String!): Player
+  playersPrivate(playerId: BigInt!): PlayersPrivate
+  stream(id: BigInt!): Stream
+  streamByPlayerId(playerId: BigInt!): Stream
+  currentPlayer: Player
+  currentPlayerId: BigInt
+  currentPlayerProviderId: String
+
+  """Reads a single `Alert` using its globally unique `ID`."""
+  alertByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Alert`."""
+    nodeId: ID!
+  ): Alert
+
+  """Reads a single `FeedItem` using its globally unique `ID`."""
+  feedItemByNodeId(
+    """The globally unique `ID` to be used in selecting a single `FeedItem`."""
+    nodeId: ID!
+  ): FeedItem
+
+  """Reads a single `Feed` using its globally unique `ID`."""
+  feedByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Feed`."""
+    nodeId: ID!
+  ): Feed
+
+  """Reads a single `Item` using its globally unique `ID`."""
+  itemByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Item`."""
+    nodeId: ID!
+  ): Item
+
+  """Reads a single `Marker` using its globally unique `ID`."""
+  markerByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Marker`."""
+    nodeId: ID!
+  ): Marker
+
+  """Reads a single `Message` using its globally unique `ID`."""
+  messageByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Message`."""
+    nodeId: ID!
+  ): Message
+
+  """Reads a single `Pet` using its globally unique `ID`."""
+  petByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Pet`."""
+    nodeId: ID!
+  ): Pet
+
+  """Reads a single `PlayerAlert` using its globally unique `ID`."""
+  playerAlertByNodeId(
+    """
+    The globally unique `ID` to be used in selecting a single `PlayerAlert`.
+    """
+    nodeId: ID!
+  ): PlayerAlert
+
+  """Reads a single `PlayerItem` using its globally unique `ID`."""
+  playerItemByNodeId(
+    """
+    The globally unique `ID` to be used in selecting a single `PlayerItem`.
+    """
+    nodeId: ID!
+  ): PlayerItem
+
+  """Reads a single `PlayerMarker` using its globally unique `ID`."""
+  playerMarkerByNodeId(
+    """
+    The globally unique `ID` to be used in selecting a single `PlayerMarker`.
+    """
+    nodeId: ID!
+  ): PlayerMarker
+
+  """Reads a single `PlayerPet` using its globally unique `ID`."""
+  playerPetByNodeId(
+    """The globally unique `ID` to be used in selecting a single `PlayerPet`."""
+    nodeId: ID!
+  ): PlayerPet
+
+  """Reads a single `PlayerSubscription` using its globally unique `ID`."""
+  playerSubscriptionByNodeId(
+    """
+    The globally unique `ID` to be used in selecting a single `PlayerSubscription`.
+    """
+    nodeId: ID!
+  ): PlayerSubscription
+
+  """Reads a single `Player` using its globally unique `ID`."""
+  playerByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Player`."""
+    nodeId: ID!
+  ): Player
+
+  """Reads a single `PlayersPrivate` using its globally unique `ID`."""
+  playersPrivateByNodeId(
+    """
+    The globally unique `ID` to be used in selecting a single `PlayersPrivate`.
+    """
+    nodeId: ID!
+  ): PlayersPrivate
+
+  """Reads a single `Stream` using its globally unique `ID`."""
+  streamByNodeId(
+    """The globally unique `ID` to be used in selecting a single `Stream`."""
+    nodeId: ID!
+  ): Stream
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+}
+
+"""A connection to a list of `Alert` values."""
+type AlertsConnection {
+  """A list of `Alert` objects."""
+  nodes: [Alert!]!
+
+  """
+  A list of edges which contains the `Alert` and cursor to aid in pagination.
+  """
+  edges: [AlertsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Alert` you could get from the connection."""
+  totalCount: Int!
+}
+
+type Alert implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  title: String
+  message: String
+  options: JSON!
+  meta: JSON
+  createdAt: Datetime
+
+  """Reads and enables pagination through a set of `PlayerAlert`."""
+  playerAlerts(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerAlertCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerAlertFilter
+  ): PlayerAlertsConnection!
+}
+
+"""
+A signed eight-byte integer. The upper big integer values are greater than the
+max value for a JavaScript number. Therefore all big integers will be output as
+strings and not numbers.
+"""
+scalar BigInt
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+A point in time as described by the [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+"""
+scalar Datetime
+
+"""A connection to a list of `PlayerAlert` values."""
+type PlayerAlertsConnection {
+  """A list of `PlayerAlert` objects."""
+  nodes: [PlayerAlert!]!
+
+  """
+  A list of edges which contains the `PlayerAlert` and cursor to aid in pagination.
+  """
+  edges: [PlayerAlertsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `PlayerAlert` you could get from the connection."""
+  totalCount: Int!
+}
+
+type PlayerAlert implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  playerId: BigInt!
+  alertId: BigInt!
+  response: String
+  acknowledgedAt: Datetime
+  createdAt: Datetime
+
+  """Reads a single `Player` that is related to this `PlayerAlert`."""
+  player: Player
+
+  """Reads a single `Alert` that is related to this `PlayerAlert`."""
+  alert: Alert
+}
+
+type Player implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  providerId: String
+  username: String!
+  meta: JSON
+  position: JSON
+  updatedAt: Datetime
+  wallets: JSON
+
+  """Reads and enables pagination through a set of `PlayerItem`."""
+  playerItems(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerItemFilter
+  ): PlayerItemsConnection!
+
+  """Reads and enables pagination through a set of `Message`."""
+  messages(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MessageCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MessageFilter
+  ): MessagesConnection!
+
+  """Reads and enables pagination through a set of `Message`."""
+  messagesByTargetPlayerId(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MessageCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MessageFilter
+  ): MessagesConnection!
+
+  """Reads and enables pagination through a set of `PlayerMarker`."""
+  playerMarkers(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerMarkerCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerMarkerFilter
+  ): PlayerMarkersConnection!
+
+  """Reads a single `PlayersPrivate` that is related to this `Player`."""
+  playersPrivate: PlayersPrivate
+
+  """Reads a single `Stream` that is related to this `Player`."""
+  stream: Stream
+
+  """Reads and enables pagination through a set of `PlayerPet`."""
+  playerPets(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerPetCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerPetFilter
+  ): PlayerPetsConnection!
+
+  """Reads and enables pagination through a set of `PlayerAlert`."""
+  playerAlerts(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerAlertCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerAlertFilter
+  ): PlayerAlertsConnection!
+
+  """Reads and enables pagination through a set of `Feed`."""
+  feeds(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Feed`."""
+    orderBy: [FeedsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: FeedCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: FeedFilter
+  ): FeedsConnection!
+
+  """Reads and enables pagination through a set of `PlayerSubscription`."""
+  playerSubscriptions(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerSubscriptionCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerSubscriptionFilter
+  ): PlayerSubscriptionsConnection!
+  apiSecret: String
+
+  """Returns the current stream key for the authenticated player."""
+  currentStreamKey: String
+  isOnline: String
+}
+
+"""A connection to a list of `PlayerItem` values."""
+type PlayerItemsConnection {
+  """A list of `PlayerItem` objects."""
+  nodes: [PlayerItem!]!
+
+  """
+  A list of edges which contains the `PlayerItem` and cursor to aid in pagination.
+  """
+  edges: [PlayerItemsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `PlayerItem` you could get from the connection."""
+  totalCount: Int!
+}
+
+type PlayerItem implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  playerId: BigInt!
+  itemId: BigInt!
+  createdAt: Datetime
+  isEquipped: Boolean
+  props: JSON
+
+  """Reads a single `Player` that is related to this `PlayerItem`."""
+  player: Player
+
+  """Reads a single `Item` that is related to this `PlayerItem`."""
+  item: Item
+}
+
+type Item implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  itemKey: String!
+  name: String!
+  type: String
+  description: String
+  price: BigFloat
+  props: JSON
+
+  """Reads and enables pagination through a set of `PlayerItem`."""
+  playerItems(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerItemFilter
+  ): PlayerItemsConnection!
+}
+
+"""
+A floating point number that requires more precision than IEEE 754 binary 64
+"""
+scalar BigFloat
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""Methods to use when ordering `PlayerItem`."""
+enum PlayerItemsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  ITEM_ID_ASC
+  ITEM_ID_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  IS_EQUIPPED_ASC
+  IS_EQUIPPED_DESC
+  PROPS_ASC
+  PROPS_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayerItem` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input PlayerItemCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `itemId` field."""
+  itemId: BigInt
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+
+  """Checks for equality with the object’s `isEquipped` field."""
+  isEquipped: Boolean
+
+  """Checks for equality with the object’s `props` field."""
+  props: JSON
+}
+
+"""
+A filter to be used against `PlayerItem` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerItemFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `itemId` field."""
+  itemId: BigIntFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Filter by the object’s `isEquipped` field."""
+  isEquipped: BooleanFilter
+
+  """Filter by the object’s `props` field."""
+  props: JSONFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerItemFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerItemFilter!]
+
+  """Negates the expression."""
+  not: PlayerItemFilter
+}
+
+"""
+A filter to be used against BigInt fields. All fields are combined with a logical ‘and.’
+"""
+input BigIntFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: BigInt
+
+  """Not equal to the specified value."""
+  notEqualTo: BigInt
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: BigInt
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: BigInt
+
+  """Included in the specified list."""
+  in: [BigInt!]
+
+  """Not included in the specified list."""
+  notIn: [BigInt!]
+
+  """Less than the specified value."""
+  lessThan: BigInt
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: BigInt
+
+  """Greater than the specified value."""
+  greaterThan: BigInt
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: BigInt
+}
+
+"""
+A filter to be used against Datetime fields. All fields are combined with a logical ‘and.’
+"""
+input DatetimeFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: Datetime
+
+  """Not equal to the specified value."""
+  notEqualTo: Datetime
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: Datetime
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: Datetime
+
+  """Included in the specified list."""
+  in: [Datetime!]
+
+  """Not included in the specified list."""
+  notIn: [Datetime!]
+
+  """Less than the specified value."""
+  lessThan: Datetime
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: Datetime
+
+  """Greater than the specified value."""
+  greaterThan: Datetime
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: Datetime
+}
+
+"""
+A filter to be used against Boolean fields. All fields are combined with a logical ‘and.’
+"""
+input BooleanFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: Boolean
+
+  """Not equal to the specified value."""
+  notEqualTo: Boolean
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: Boolean
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: Boolean
+
+  """Included in the specified list."""
+  in: [Boolean!]
+
+  """Not included in the specified list."""
+  notIn: [Boolean!]
+
+  """Less than the specified value."""
+  lessThan: Boolean
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: Boolean
+
+  """Greater than the specified value."""
+  greaterThan: Boolean
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: Boolean
+}
+
+"""
+A filter to be used against JSON fields. All fields are combined with a logical ‘and.’
+"""
+input JSONFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: JSON
+
+  """Not equal to the specified value."""
+  notEqualTo: JSON
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: JSON
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: JSON
+
+  """Included in the specified list."""
+  in: [JSON!]
+
+  """Not included in the specified list."""
+  notIn: [JSON!]
+
+  """Less than the specified value."""
+  lessThan: JSON
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: JSON
+
+  """Greater than the specified value."""
+  greaterThan: JSON
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: JSON
+
+  """Contains the specified JSON."""
+  contains: JSON
+
+  """Contains the specified key."""
+  containsKey: String
+
+  """Contains all of the specified keys."""
+  containsAllKeys: [String!]
+
+  """Contains any of the specified keys."""
+  containsAnyKeys: [String!]
+
+  """Contained by the specified JSON."""
+  containedBy: JSON
+}
+
+"""A `PlayerItem` edge in the connection."""
+type PlayerItemsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayerItem` at the end of the edge."""
+  node: PlayerItem!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+}
+
+"""A connection to a list of `Message` values."""
+type MessagesConnection {
+  """A list of `Message` objects."""
+  nodes: [Message!]!
+
+  """
+  A list of edges which contains the `Message` and cursor to aid in pagination.
+  """
+  edges: [MessagesEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Message` you could get from the connection."""
+  totalCount: Int!
+}
+
+type Message implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  playerId: BigInt!
+  targetPlayerId: BigInt
+  message: String!
+  meta: JSON
+  isAiGenerated: Boolean
+  createdAt: Datetime
+  isDirectMessage: Boolean
+
+  """Reads a single `Player` that is related to this `Message`."""
+  player: Player
+
+  """Reads a single `Player` that is related to this `Message`."""
+  targetPlayer: Player
+}
+
+"""A `Message` edge in the connection."""
+type MessagesEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Message` at the end of the edge."""
+  node: Message!
+}
+
+"""Methods to use when ordering `Message`."""
+enum MessagesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  TARGET_PLAYER_ID_ASC
+  TARGET_PLAYER_ID_DESC
+  MESSAGE_ASC
+  MESSAGE_DESC
+  META_ASC
+  META_DESC
+  IS_AI_GENERATED_ASC
+  IS_AI_GENERATED_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  IS_DIRECT_MESSAGE_ASC
+  IS_DIRECT_MESSAGE_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Message` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input MessageCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `targetPlayerId` field."""
+  targetPlayerId: BigInt
+
+  """Checks for equality with the object’s `message` field."""
+  message: String
+
+  """Checks for equality with the object’s `meta` field."""
+  meta: JSON
+
+  """Checks for equality with the object’s `isAiGenerated` field."""
+  isAiGenerated: Boolean
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+
+  """Checks for equality with the object’s `isDirectMessage` field."""
+  isDirectMessage: Boolean
+}
+
+"""
+A filter to be used against `Message` object types. All fields are combined with a logical ‘and.’
+"""
+input MessageFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `targetPlayerId` field."""
+  targetPlayerId: BigIntFilter
+
+  """Filter by the object’s `message` field."""
+  message: StringFilter
+
+  """Filter by the object’s `meta` field."""
+  meta: JSONFilter
+
+  """Filter by the object’s `isAiGenerated` field."""
+  isAiGenerated: BooleanFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Filter by the object’s `isDirectMessage` field."""
+  isDirectMessage: BooleanFilter
+
+  """Checks for all expressions in this list."""
+  and: [MessageFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MessageFilter!]
+
+  """Negates the expression."""
+  not: MessageFilter
+}
+
+"""
+A filter to be used against String fields. All fields are combined with a logical ‘and.’
+"""
+input StringFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: String
+
+  """Not equal to the specified value."""
+  notEqualTo: String
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: String
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: String
+
+  """Included in the specified list."""
+  in: [String!]
+
+  """Not included in the specified list."""
+  notIn: [String!]
+
+  """Less than the specified value."""
+  lessThan: String
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: String
+
+  """Greater than the specified value."""
+  greaterThan: String
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: String
+
+  """Contains the specified string (case-sensitive)."""
+  includes: String
+
+  """Does not contain the specified string (case-sensitive)."""
+  notIncludes: String
+
+  """Contains the specified string (case-insensitive)."""
+  includesInsensitive: String
+
+  """Does not contain the specified string (case-insensitive)."""
+  notIncludesInsensitive: String
+
+  """Starts with the specified string (case-sensitive)."""
+  startsWith: String
+
+  """Does not start with the specified string (case-sensitive)."""
+  notStartsWith: String
+
+  """Starts with the specified string (case-insensitive)."""
+  startsWithInsensitive: String
+
+  """Does not start with the specified string (case-insensitive)."""
+  notStartsWithInsensitive: String
+
+  """Ends with the specified string (case-sensitive)."""
+  endsWith: String
+
+  """Does not end with the specified string (case-sensitive)."""
+  notEndsWith: String
+
+  """Ends with the specified string (case-insensitive)."""
+  endsWithInsensitive: String
+
+  """Does not end with the specified string (case-insensitive)."""
+  notEndsWithInsensitive: String
+
+  """
+  Matches the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  like: String
+
+  """
+  Does not match the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  notLike: String
+
+  """
+  Matches the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  likeInsensitive: String
+
+  """
+  Does not match the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  notLikeInsensitive: String
+
+  """Equal to the specified value (case-insensitive)."""
+  equalToInsensitive: String
+
+  """Not equal to the specified value (case-insensitive)."""
+  notEqualToInsensitive: String
+
+  """
+  Not equal to the specified value, treating null like an ordinary value (case-insensitive).
+  """
+  distinctFromInsensitive: String
+
+  """
+  Equal to the specified value, treating null like an ordinary value (case-insensitive).
+  """
+  notDistinctFromInsensitive: String
+
+  """Included in the specified list (case-insensitive)."""
+  inInsensitive: [String!]
+
+  """Not included in the specified list (case-insensitive)."""
+  notInInsensitive: [String!]
+
+  """Less than the specified value (case-insensitive)."""
+  lessThanInsensitive: String
+
+  """Less than or equal to the specified value (case-insensitive)."""
+  lessThanOrEqualToInsensitive: String
+
+  """Greater than the specified value (case-insensitive)."""
+  greaterThanInsensitive: String
+
+  """Greater than or equal to the specified value (case-insensitive)."""
+  greaterThanOrEqualToInsensitive: String
+}
+
+"""A connection to a list of `PlayerMarker` values."""
+type PlayerMarkersConnection {
+  """A list of `PlayerMarker` objects."""
+  nodes: [PlayerMarker!]!
+
+  """
+  A list of edges which contains the `PlayerMarker` and cursor to aid in pagination.
+  """
+  edges: [PlayerMarkersEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `PlayerMarker` you could get from the connection."""
+  totalCount: Int!
+}
+
+type PlayerMarker implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  playerId: BigInt!
+  markerId: BigInt!
+  props: JSON
+
+  """Reads a single `Player` that is related to this `PlayerMarker`."""
+  player: Player
+
+  """Reads a single `Marker` that is related to this `PlayerMarker`."""
+  marker: Marker
+}
+
+type Marker implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  type: String
+  props: JSON
+
+  """Reads and enables pagination through a set of `PlayerMarker`."""
+  playerMarkers(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerMarkerCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerMarkerFilter
+  ): PlayerMarkersConnection!
+}
+
+"""Methods to use when ordering `PlayerMarker`."""
+enum PlayerMarkersOrderBy {
+  NATURAL
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  MARKER_ID_ASC
+  MARKER_ID_DESC
+  PROPS_ASC
+  PROPS_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayerMarker` object types. All fields are
+tested for equality and combined with a logical ‘and.’
+"""
+input PlayerMarkerCondition {
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `markerId` field."""
+  markerId: BigInt
+
+  """Checks for equality with the object’s `props` field."""
+  props: JSON
+}
+
+"""
+A filter to be used against `PlayerMarker` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerMarkerFilter {
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `markerId` field."""
+  markerId: BigIntFilter
+
+  """Filter by the object’s `props` field."""
+  props: JSONFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerMarkerFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerMarkerFilter!]
+
+  """Negates the expression."""
+  not: PlayerMarkerFilter
+}
+
+"""A `PlayerMarker` edge in the connection."""
+type PlayerMarkersEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayerMarker` at the end of the edge."""
+  node: PlayerMarker!
+}
+
+type PlayersPrivate implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  playerId: BigInt!
+  aiPrompt: String
+  assistantId: String
+  updatedAt: Datetime
+
+  """Reads a single `Player` that is related to this `PlayersPrivate`."""
+  player: Player
+}
+
+type Stream implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  playerId: BigInt!
+  providerId: String
+  meta: JSON
+  rtmpsUrl: String
+  viewerUrl: String
+  status: String
+  updatedAt: Datetime
+
+  """Reads a single `Player` that is related to this `Stream`."""
+  player: Player
+}
+
+"""A connection to a list of `PlayerPet` values."""
+type PlayerPetsConnection {
+  """A list of `PlayerPet` objects."""
+  nodes: [PlayerPet!]!
+
+  """
+  A list of edges which contains the `PlayerPet` and cursor to aid in pagination.
+  """
+  edges: [PlayerPetsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `PlayerPet` you could get from the connection."""
+  totalCount: Int!
+}
+
+type PlayerPet implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  playerId: BigInt!
+  petId: BigInt!
+  name: String
+  level: Int!
+  xp: Int!
+  createdAt: Datetime
+
+  """Reads a single `Player` that is related to this `PlayerPet`."""
+  player: Player
+
+  """Reads a single `Pet` that is related to this `PlayerPet`."""
+  pet: Pet
+}
+
+type Pet implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  spriteIndex: Int!
+
+  """Reads and enables pagination through a set of `PlayerPet`."""
+  playerPets(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerPetCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerPetFilter
+  ): PlayerPetsConnection!
+}
+
+"""Methods to use when ordering `PlayerPet`."""
+enum PlayerPetsOrderBy {
+  NATURAL
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  PET_ID_ASC
+  PET_ID_DESC
+  NAME_ASC
+  NAME_DESC
+  LEVEL_ASC
+  LEVEL_DESC
+  XP_ASC
+  XP_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayerPet` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input PlayerPetCondition {
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `petId` field."""
+  petId: BigInt
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `level` field."""
+  level: Int
+
+  """Checks for equality with the object’s `xp` field."""
+  xp: Int
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `PlayerPet` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerPetFilter {
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `petId` field."""
+  petId: BigIntFilter
+
+  """Filter by the object’s `name` field."""
+  name: StringFilter
+
+  """Filter by the object’s `level` field."""
+  level: IntFilter
+
+  """Filter by the object’s `xp` field."""
+  xp: IntFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerPetFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerPetFilter!]
+
+  """Negates the expression."""
+  not: PlayerPetFilter
+}
+
+"""
+A filter to be used against Int fields. All fields are combined with a logical ‘and.’
+"""
+input IntFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: Int
+
+  """Not equal to the specified value."""
+  notEqualTo: Int
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: Int
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: Int
+
+  """Included in the specified list."""
+  in: [Int!]
+
+  """Not included in the specified list."""
+  notIn: [Int!]
+
+  """Less than the specified value."""
+  lessThan: Int
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: Int
+
+  """Greater than the specified value."""
+  greaterThan: Int
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: Int
+}
+
+"""A `PlayerPet` edge in the connection."""
+type PlayerPetsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayerPet` at the end of the edge."""
+  node: PlayerPet!
+}
+
+"""Methods to use when ordering `PlayerAlert`."""
+enum PlayerAlertsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  ALERT_ID_ASC
+  ALERT_ID_DESC
+  RESPONSE_ASC
+  RESPONSE_DESC
+  ACKNOWLEDGED_AT_ASC
+  ACKNOWLEDGED_AT_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayerAlert` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input PlayerAlertCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `alertId` field."""
+  alertId: BigInt
+
+  """Checks for equality with the object’s `response` field."""
+  response: String
+
+  """Checks for equality with the object’s `acknowledgedAt` field."""
+  acknowledgedAt: Datetime
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `PlayerAlert` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerAlertFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `alertId` field."""
+  alertId: BigIntFilter
+
+  """Filter by the object’s `response` field."""
+  response: StringFilter
+
+  """Filter by the object’s `acknowledgedAt` field."""
+  acknowledgedAt: DatetimeFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerAlertFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerAlertFilter!]
+
+  """Negates the expression."""
+  not: PlayerAlertFilter
+}
+
+"""A connection to a list of `Feed` values."""
+type FeedsConnection {
+  """A list of `Feed` objects."""
+  nodes: [Feed!]!
+
+  """
+  A list of edges which contains the `Feed` and cursor to aid in pagination.
+  """
+  edges: [FeedsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Feed` you could get from the connection."""
+  totalCount: Int!
+}
+
+type Feed implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  playerId: BigInt!
+  name: String!
+  slug: String!
+  isPublic: Boolean!
+  createdAt: Datetime
+
+  """Reads a single `Player` that is related to this `Feed`."""
+  player: Player
+
+  """Reads and enables pagination through a set of `FeedItem`."""
+  feedItems(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `FeedItem`."""
+    orderBy: [FeedItemsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: FeedItemCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: FeedItemFilter
+  ): FeedItemsConnection!
+
+  """Reads and enables pagination through a set of `PlayerSubscription`."""
+  playerSubscriptions(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PlayerSubscriptionCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PlayerSubscriptionFilter
+  ): PlayerSubscriptionsConnection!
+}
+
+"""A connection to a list of `FeedItem` values."""
+type FeedItemsConnection {
+  """A list of `FeedItem` objects."""
+  nodes: [FeedItem!]!
+
+  """
+  A list of edges which contains the `FeedItem` and cursor to aid in pagination.
+  """
+  edges: [FeedItemsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `FeedItem` you could get from the connection."""
+  totalCount: Int!
+}
+
+type FeedItem implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: BigInt!
+  feedId: BigInt!
+  content: JSON!
+  createdAt: Datetime
+
+  """Reads a single `Feed` that is related to this `FeedItem`."""
+  feed: Feed
+}
+
+"""A `FeedItem` edge in the connection."""
+type FeedItemsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `FeedItem` at the end of the edge."""
+  node: FeedItem!
+}
+
+"""Methods to use when ordering `FeedItem`."""
+enum FeedItemsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  FEED_ID_ASC
+  FEED_ID_DESC
+  CONTENT_ASC
+  CONTENT_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `FeedItem` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input FeedItemCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `feedId` field."""
+  feedId: BigInt
+
+  """Checks for equality with the object’s `content` field."""
+  content: JSON
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `FeedItem` object types. All fields are combined with a logical ‘and.’
+"""
+input FeedItemFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `feedId` field."""
+  feedId: BigIntFilter
+
+  """Filter by the object’s `content` field."""
+  content: JSONFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [FeedItemFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [FeedItemFilter!]
+
+  """Negates the expression."""
+  not: FeedItemFilter
+}
+
+"""A connection to a list of `PlayerSubscription` values."""
+type PlayerSubscriptionsConnection {
+  """A list of `PlayerSubscription` objects."""
+  nodes: [PlayerSubscription!]!
+
+  """
+  A list of edges which contains the `PlayerSubscription` and cursor to aid in pagination.
+  """
+  edges: [PlayerSubscriptionsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """
+  The count of *all* `PlayerSubscription` you could get from the connection.
+  """
+  totalCount: Int!
+}
+
+type PlayerSubscription implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  playerId: BigInt!
+  feedId: BigInt!
+  createdAt: Datetime
+
+  """Reads a single `Player` that is related to this `PlayerSubscription`."""
+  player: Player
+
+  """Reads a single `Feed` that is related to this `PlayerSubscription`."""
+  feed: Feed
+}
+
+"""A `PlayerSubscription` edge in the connection."""
+type PlayerSubscriptionsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayerSubscription` at the end of the edge."""
+  node: PlayerSubscription!
+}
+
+"""Methods to use when ordering `PlayerSubscription`."""
+enum PlayerSubscriptionsOrderBy {
+  NATURAL
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  FEED_ID_ASC
+  FEED_ID_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayerSubscription` object types. All fields are
+tested for equality and combined with a logical ‘and.’
+"""
+input PlayerSubscriptionCondition {
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `feedId` field."""
+  feedId: BigInt
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `PlayerSubscription` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerSubscriptionFilter {
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `feedId` field."""
+  feedId: BigIntFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerSubscriptionFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerSubscriptionFilter!]
+
+  """Negates the expression."""
+  not: PlayerSubscriptionFilter
+}
+
+"""A `Feed` edge in the connection."""
+type FeedsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Feed` at the end of the edge."""
+  node: Feed!
+}
+
+"""Methods to use when ordering `Feed`."""
+enum FeedsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  NAME_ASC
+  NAME_DESC
+  SLUG_ASC
+  SLUG_DESC
+  IS_PUBLIC_ASC
+  IS_PUBLIC_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Feed` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input FeedCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `slug` field."""
+  slug: String
+
+  """Checks for equality with the object’s `isPublic` field."""
+  isPublic: Boolean
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `Feed` object types. All fields are combined with a logical ‘and.’
+"""
+input FeedFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `name` field."""
+  name: StringFilter
+
+  """Filter by the object’s `slug` field."""
+  slug: StringFilter
+
+  """Filter by the object’s `isPublic` field."""
+  isPublic: BooleanFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [FeedFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [FeedFilter!]
+
+  """Negates the expression."""
+  not: FeedFilter
+}
+
+"""A `PlayerAlert` edge in the connection."""
+type PlayerAlertsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayerAlert` at the end of the edge."""
+  node: PlayerAlert!
+}
+
+"""A `Alert` edge in the connection."""
+type AlertsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Alert` at the end of the edge."""
+  node: Alert!
+}
+
+"""Methods to use when ordering `Alert`."""
+enum AlertsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  TITLE_ASC
+  TITLE_DESC
+  MESSAGE_ASC
+  MESSAGE_DESC
+  OPTIONS_ASC
+  OPTIONS_DESC
+  META_ASC
+  META_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Alert` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input AlertCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `title` field."""
+  title: String
+
+  """Checks for equality with the object’s `message` field."""
+  message: String
+
+  """Checks for equality with the object’s `options` field."""
+  options: JSON
+
+  """Checks for equality with the object’s `meta` field."""
+  meta: JSON
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+}
+
+"""
+A filter to be used against `Alert` object types. All fields are combined with a logical ‘and.’
+"""
+input AlertFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `title` field."""
+  title: StringFilter
+
+  """Filter by the object’s `message` field."""
+  message: StringFilter
+
+  """Filter by the object’s `options` field."""
+  options: JSONFilter
+
+  """Filter by the object’s `meta` field."""
+  meta: JSONFilter
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [AlertFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [AlertFilter!]
+
+  """Negates the expression."""
+  not: AlertFilter
+}
+
+"""A connection to a list of `Item` values."""
+type ItemsConnection {
+  """A list of `Item` objects."""
+  nodes: [Item!]!
+
+  """
+  A list of edges which contains the `Item` and cursor to aid in pagination.
+  """
+  edges: [ItemsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Item` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Item` edge in the connection."""
+type ItemsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Item` at the end of the edge."""
+  node: Item!
+}
+
+"""Methods to use when ordering `Item`."""
+enum ItemsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  ITEM_KEY_ASC
+  ITEM_KEY_DESC
+  NAME_ASC
+  NAME_DESC
+  TYPE_ASC
+  TYPE_DESC
+  DESCRIPTION_ASC
+  DESCRIPTION_DESC
+  PRICE_ASC
+  PRICE_DESC
+  PROPS_ASC
+  PROPS_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Item` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input ItemCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `itemKey` field."""
+  itemKey: String
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `type` field."""
+  type: String
+
+  """Checks for equality with the object’s `description` field."""
+  description: String
+
+  """Checks for equality with the object’s `price` field."""
+  price: BigFloat
+
+  """Checks for equality with the object’s `props` field."""
+  props: JSON
+}
+
+"""
+A filter to be used against `Item` object types. All fields are combined with a logical ‘and.’
+"""
+input ItemFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `itemKey` field."""
+  itemKey: StringFilter
+
+  """Filter by the object’s `name` field."""
+  name: StringFilter
+
+  """Filter by the object’s `type` field."""
+  type: StringFilter
+
+  """Filter by the object’s `description` field."""
+  description: StringFilter
+
+  """Filter by the object’s `price` field."""
+  price: BigFloatFilter
+
+  """Filter by the object’s `props` field."""
+  props: JSONFilter
+
+  """Checks for all expressions in this list."""
+  and: [ItemFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [ItemFilter!]
+
+  """Negates the expression."""
+  not: ItemFilter
+}
+
+"""
+A filter to be used against BigFloat fields. All fields are combined with a logical ‘and.’
+"""
+input BigFloatFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: BigFloat
+
+  """Not equal to the specified value."""
+  notEqualTo: BigFloat
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: BigFloat
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: BigFloat
+
+  """Included in the specified list."""
+  in: [BigFloat!]
+
+  """Not included in the specified list."""
+  notIn: [BigFloat!]
+
+  """Less than the specified value."""
+  lessThan: BigFloat
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: BigFloat
+
+  """Greater than the specified value."""
+  greaterThan: BigFloat
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: BigFloat
+}
+
+"""A connection to a list of `Marker` values."""
+type MarkersConnection {
+  """A list of `Marker` objects."""
+  nodes: [Marker!]!
+
+  """
+  A list of edges which contains the `Marker` and cursor to aid in pagination.
+  """
+  edges: [MarkersEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Marker` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Marker` edge in the connection."""
+type MarkersEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Marker` at the end of the edge."""
+  node: Marker!
+}
+
+"""Methods to use when ordering `Marker`."""
+enum MarkersOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  TYPE_ASC
+  TYPE_DESC
+  PROPS_ASC
+  PROPS_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Marker` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input MarkerCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `type` field."""
+  type: String
+
+  """Checks for equality with the object’s `props` field."""
+  props: JSON
+}
+
+"""
+A filter to be used against `Marker` object types. All fields are combined with a logical ‘and.’
+"""
+input MarkerFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `type` field."""
+  type: StringFilter
+
+  """Filter by the object’s `props` field."""
+  props: JSONFilter
+
+  """Checks for all expressions in this list."""
+  and: [MarkerFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MarkerFilter!]
+
+  """Negates the expression."""
+  not: MarkerFilter
+}
+
+"""A connection to a list of `Pet` values."""
+type PetsConnection {
+  """A list of `Pet` objects."""
+  nodes: [Pet!]!
+
+  """
+  A list of edges which contains the `Pet` and cursor to aid in pagination.
+  """
+  edges: [PetsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Pet` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Pet` edge in the connection."""
+type PetsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Pet` at the end of the edge."""
+  node: Pet!
+}
+
+"""Methods to use when ordering `Pet`."""
+enum PetsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  SPRITE_INDEX_ASC
+  SPRITE_INDEX_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Pet` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input PetCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `spriteIndex` field."""
+  spriteIndex: Int
+}
+
+"""
+A filter to be used against `Pet` object types. All fields are combined with a logical ‘and.’
+"""
+input PetFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `spriteIndex` field."""
+  spriteIndex: IntFilter
+
+  """Checks for all expressions in this list."""
+  and: [PetFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PetFilter!]
+
+  """Negates the expression."""
+  not: PetFilter
+}
+
+"""A connection to a list of `Player` values."""
+type PlayersConnection {
+  """A list of `Player` objects."""
+  nodes: [Player!]!
+
+  """
+  A list of edges which contains the `Player` and cursor to aid in pagination.
+  """
+  edges: [PlayersEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Player` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Player` edge in the connection."""
+type PlayersEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Player` at the end of the edge."""
+  node: Player!
+}
+
+"""Methods to use when ordering `Player`."""
+enum PlayersOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PROVIDER_ID_ASC
+  PROVIDER_ID_DESC
+  USERNAME_ASC
+  USERNAME_DESC
+  META_ASC
+  META_DESC
+  POSITION_ASC
+  POSITION_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  WALLETS_ASC
+  WALLETS_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Player` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input PlayerCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `providerId` field."""
+  providerId: String
+
+  """Checks for equality with the object’s `username` field."""
+  username: String
+
+  """Checks for equality with the object’s `meta` field."""
+  meta: JSON
+
+  """Checks for equality with the object’s `position` field."""
+  position: JSON
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+
+  """Checks for equality with the object’s `wallets` field."""
+  wallets: JSON
+}
+
+"""
+A filter to be used against `Player` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayerFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `providerId` field."""
+  providerId: StringFilter
+
+  """Filter by the object’s `username` field."""
+  username: StringFilter
+
+  """Filter by the object’s `meta` field."""
+  meta: JSONFilter
+
+  """Filter by the object’s `position` field."""
+  position: JSONFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Filter by the object’s `wallets` field."""
+  wallets: JSONFilter
+
+  """Filter by the object’s `apiSecret` field."""
+  apiSecret: StringFilter
+
+  """Filter by the object’s `currentStreamKey` field."""
+  currentStreamKey: StringFilter
+
+  """Filter by the object’s `isOnline` field."""
+  isOnline: StringFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayerFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayerFilter!]
+
+  """Negates the expression."""
+  not: PlayerFilter
+}
+
+"""A connection to a list of `PlayersPrivate` values."""
+type PlayersPrivatesConnection {
+  """A list of `PlayersPrivate` objects."""
+  nodes: [PlayersPrivate!]!
+
+  """
+  A list of edges which contains the `PlayersPrivate` and cursor to aid in pagination.
+  """
+  edges: [PlayersPrivatesEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `PlayersPrivate` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `PlayersPrivate` edge in the connection."""
+type PlayersPrivatesEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `PlayersPrivate` at the end of the edge."""
+  node: PlayersPrivate!
+}
+
+"""Methods to use when ordering `PlayersPrivate`."""
+enum PlayersPrivatesOrderBy {
+  NATURAL
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  AI_PROMPT_ASC
+  AI_PROMPT_DESC
+  ASSISTANT_ID_ASC
+  ASSISTANT_ID_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `PlayersPrivate` object types. All fields are
+tested for equality and combined with a logical ‘and.’
+"""
+input PlayersPrivateCondition {
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `aiPrompt` field."""
+  aiPrompt: String
+
+  """Checks for equality with the object’s `assistantId` field."""
+  assistantId: String
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+}
+
+"""
+A filter to be used against `PlayersPrivate` object types. All fields are combined with a logical ‘and.’
+"""
+input PlayersPrivateFilter {
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `aiPrompt` field."""
+  aiPrompt: StringFilter
+
+  """Filter by the object’s `assistantId` field."""
+  assistantId: StringFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [PlayersPrivateFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PlayersPrivateFilter!]
+
+  """Negates the expression."""
+  not: PlayersPrivateFilter
+}
+
+"""A connection to a list of `Stream` values."""
+type StreamsConnection {
+  """A list of `Stream` objects."""
+  nodes: [Stream!]!
+
+  """
+  A list of edges which contains the `Stream` and cursor to aid in pagination.
+  """
+  edges: [StreamsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Stream` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Stream` edge in the connection."""
+type StreamsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Stream` at the end of the edge."""
+  node: Stream!
+}
+
+"""Methods to use when ordering `Stream`."""
+enum StreamsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PLAYER_ID_ASC
+  PLAYER_ID_DESC
+  PROVIDER_ID_ASC
+  PROVIDER_ID_DESC
+  META_ASC
+  META_DESC
+  RTMPS_URL_ASC
+  RTMPS_URL_DESC
+  VIEWER_URL_ASC
+  VIEWER_URL_DESC
+  STATUS_ASC
+  STATUS_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Stream` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input StreamCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: BigInt
+
+  """Checks for equality with the object’s `playerId` field."""
+  playerId: BigInt
+
+  """Checks for equality with the object’s `providerId` field."""
+  providerId: String
+
+  """Checks for equality with the object’s `meta` field."""
+  meta: JSON
+
+  """Checks for equality with the object’s `rtmpsUrl` field."""
+  rtmpsUrl: String
+
+  """Checks for equality with the object’s `viewerUrl` field."""
+  viewerUrl: String
+
+  """Checks for equality with the object’s `status` field."""
+  status: String
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+}
+
+"""
+A filter to be used against `Stream` object types. All fields are combined with a logical ‘and.’
+"""
+input StreamFilter {
+  """Filter by the object’s `id` field."""
+  id: BigIntFilter
+
+  """Filter by the object’s `playerId` field."""
+  playerId: BigIntFilter
+
+  """Filter by the object’s `providerId` field."""
+  providerId: StringFilter
+
+  """Filter by the object’s `meta` field."""
+  meta: JSONFilter
+
+  """Filter by the object’s `rtmpsUrl` field."""
+  rtmpsUrl: StringFilter
+
+  """Filter by the object’s `viewerUrl` field."""
+  viewerUrl: StringFilter
+
+  """Filter by the object’s `status` field."""
+  status: StringFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Checks for all expressions in this list."""
+  and: [StreamFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [StreamFilter!]
+
+  """Negates the expression."""
+  not: StreamFilter
+}
+
+"""
+The root mutation type which contains root level fields which mutate data.
+"""
+type Mutation {
+  """Creates a single `Alert`."""
+  createAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateAlertInput!
+  ): CreateAlertPayload
+
+  """Creates a single `Item`."""
+  createItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateItemInput!
+  ): CreateItemPayload
+
+  """Creates a single `Marker`."""
+  createMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMarkerInput!
+  ): CreateMarkerPayload
+
+  """Creates a single `Message`."""
+  createMessage(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMessageInput!
+  ): CreateMessagePayload
+
+  """Creates a single `Pet`."""
+  createPet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePetInput!
+  ): CreatePetPayload
+
+  """Creates a single `PlayerAlert`."""
+  createPlayerAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerAlertInput!
+  ): CreatePlayerAlertPayload
+
+  """Creates a single `PlayerItem`."""
+  createPlayerItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerItemInput!
+  ): CreatePlayerItemPayload
+
+  """Creates a single `PlayerMarker`."""
+  createPlayerMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerMarkerInput!
+  ): CreatePlayerMarkerPayload
+
+  """Creates a single `PlayerPet`."""
+  createPlayerPet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerPetInput!
+  ): CreatePlayerPetPayload
+
+  """Creates a single `PlayerSubscription`."""
+  createPlayerSubscription(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerSubscriptionInput!
+  ): CreatePlayerSubscriptionPayload
+
+  """Creates a single `Player`."""
+  createPlayer(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayerInput!
+  ): CreatePlayerPayload
+
+  """Creates a single `PlayersPrivate`."""
+  createPlayersPrivate(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePlayersPrivateInput!
+  ): CreatePlayersPrivatePayload
+
+  """Updates a single `Alert` using its globally unique id and a patch."""
+  updateAlertByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateAlertByNodeIdInput!
+  ): UpdateAlertPayload
+
+  """Updates a single `Alert` using a unique key and a patch."""
+  updateAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateAlertInput!
+  ): UpdateAlertPayload
+
+  """Updates a single `Item` using its globally unique id and a patch."""
+  updateItemByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateItemByNodeIdInput!
+  ): UpdateItemPayload
+
+  """Updates a single `Item` using a unique key and a patch."""
+  updateItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateItemInput!
+  ): UpdateItemPayload
+
+  """Updates a single `Marker` using its globally unique id and a patch."""
+  updateMarkerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMarkerByNodeIdInput!
+  ): UpdateMarkerPayload
+
+  """Updates a single `Marker` using a unique key and a patch."""
+  updateMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMarkerInput!
+  ): UpdateMarkerPayload
+
+  """Updates a single `Message` using its globally unique id and a patch."""
+  updateMessageByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMessageByNodeIdInput!
+  ): UpdateMessagePayload
+
+  """Updates a single `Message` using a unique key and a patch."""
+  updateMessage(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMessageInput!
+  ): UpdateMessagePayload
+
+  """Updates a single `Pet` using its globally unique id and a patch."""
+  updatePetByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePetByNodeIdInput!
+  ): UpdatePetPayload
+
+  """Updates a single `Pet` using a unique key and a patch."""
+  updatePet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePetInput!
+  ): UpdatePetPayload
+
+  """Updates a single `Pet` using a unique key and a patch."""
+  updatePetBySpriteIndex(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePetBySpriteIndexInput!
+  ): UpdatePetPayload
+
+  """
+  Updates a single `PlayerAlert` using its globally unique id and a patch.
+  """
+  updatePlayerAlertByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerAlertByNodeIdInput!
+  ): UpdatePlayerAlertPayload
+
+  """Updates a single `PlayerAlert` using a unique key and a patch."""
+  updatePlayerAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerAlertInput!
+  ): UpdatePlayerAlertPayload
+
+  """
+  Updates a single `PlayerItem` using its globally unique id and a patch.
+  """
+  updatePlayerItemByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerItemByNodeIdInput!
+  ): UpdatePlayerItemPayload
+
+  """Updates a single `PlayerItem` using a unique key and a patch."""
+  updatePlayerItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerItemInput!
+  ): UpdatePlayerItemPayload
+
+  """
+  Updates a single `PlayerMarker` using its globally unique id and a patch.
+  """
+  updatePlayerMarkerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerMarkerByNodeIdInput!
+  ): UpdatePlayerMarkerPayload
+
+  """Updates a single `PlayerMarker` using a unique key and a patch."""
+  updatePlayerMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerMarkerInput!
+  ): UpdatePlayerMarkerPayload
+
+  """Updates a single `PlayerPet` using its globally unique id and a patch."""
+  updatePlayerPetByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerPetByNodeIdInput!
+  ): UpdatePlayerPetPayload
+
+  """Updates a single `PlayerPet` using a unique key and a patch."""
+  updatePlayerPet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerPetInput!
+  ): UpdatePlayerPetPayload
+
+  """Updates a single `Player` using its globally unique id and a patch."""
+  updatePlayerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerByNodeIdInput!
+  ): UpdatePlayerPayload
+
+  """Updates a single `Player` using a unique key and a patch."""
+  updatePlayer(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerInput!
+  ): UpdatePlayerPayload
+
+  """Updates a single `Player` using a unique key and a patch."""
+  updatePlayerByProviderId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayerByProviderIdInput!
+  ): UpdatePlayerPayload
+
+  """
+  Updates a single `PlayersPrivate` using its globally unique id and a patch.
+  """
+  updatePlayersPrivateByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayersPrivateByNodeIdInput!
+  ): UpdatePlayersPrivatePayload
+
+  """Updates a single `PlayersPrivate` using a unique key and a patch."""
+  updatePlayersPrivate(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePlayersPrivateInput!
+  ): UpdatePlayersPrivatePayload
+
+  """Deletes a single `Alert` using its globally unique id."""
+  deleteAlertByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteAlertByNodeIdInput!
+  ): DeleteAlertPayload
+
+  """Deletes a single `Alert` using a unique key."""
+  deleteAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteAlertInput!
+  ): DeleteAlertPayload
+
+  """Deletes a single `Item` using its globally unique id."""
+  deleteItemByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteItemByNodeIdInput!
+  ): DeleteItemPayload
+
+  """Deletes a single `Item` using a unique key."""
+  deleteItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteItemInput!
+  ): DeleteItemPayload
+
+  """Deletes a single `Marker` using its globally unique id."""
+  deleteMarkerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMarkerByNodeIdInput!
+  ): DeleteMarkerPayload
+
+  """Deletes a single `Marker` using a unique key."""
+  deleteMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMarkerInput!
+  ): DeleteMarkerPayload
+
+  """Deletes a single `Message` using its globally unique id."""
+  deleteMessageByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMessageByNodeIdInput!
+  ): DeleteMessagePayload
+
+  """Deletes a single `Message` using a unique key."""
+  deleteMessage(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMessageInput!
+  ): DeleteMessagePayload
+
+  """Deletes a single `Pet` using its globally unique id."""
+  deletePetByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePetByNodeIdInput!
+  ): DeletePetPayload
+
+  """Deletes a single `Pet` using a unique key."""
+  deletePet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePetInput!
+  ): DeletePetPayload
+
+  """Deletes a single `Pet` using a unique key."""
+  deletePetBySpriteIndex(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePetBySpriteIndexInput!
+  ): DeletePetPayload
+
+  """Deletes a single `PlayerAlert` using its globally unique id."""
+  deletePlayerAlertByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerAlertByNodeIdInput!
+  ): DeletePlayerAlertPayload
+
+  """Deletes a single `PlayerAlert` using a unique key."""
+  deletePlayerAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerAlertInput!
+  ): DeletePlayerAlertPayload
+
+  """Deletes a single `PlayerItem` using its globally unique id."""
+  deletePlayerItemByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerItemByNodeIdInput!
+  ): DeletePlayerItemPayload
+
+  """Deletes a single `PlayerItem` using a unique key."""
+  deletePlayerItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerItemInput!
+  ): DeletePlayerItemPayload
+
+  """Deletes a single `PlayerMarker` using its globally unique id."""
+  deletePlayerMarkerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerMarkerByNodeIdInput!
+  ): DeletePlayerMarkerPayload
+
+  """Deletes a single `PlayerMarker` using a unique key."""
+  deletePlayerMarker(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerMarkerInput!
+  ): DeletePlayerMarkerPayload
+
+  """Deletes a single `PlayerPet` using its globally unique id."""
+  deletePlayerPetByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerPetByNodeIdInput!
+  ): DeletePlayerPetPayload
+
+  """Deletes a single `PlayerPet` using a unique key."""
+  deletePlayerPet(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerPetInput!
+  ): DeletePlayerPetPayload
+
+  """Deletes a single `PlayerSubscription` using its globally unique id."""
+  deletePlayerSubscriptionByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerSubscriptionByNodeIdInput!
+  ): DeletePlayerSubscriptionPayload
+
+  """Deletes a single `PlayerSubscription` using a unique key."""
+  deletePlayerSubscription(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerSubscriptionInput!
+  ): DeletePlayerSubscriptionPayload
+
+  """Deletes a single `Player` using its globally unique id."""
+  deletePlayerByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerByNodeIdInput!
+  ): DeletePlayerPayload
+
+  """Deletes a single `Player` using a unique key."""
+  deletePlayer(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerInput!
+  ): DeletePlayerPayload
+
+  """Deletes a single `Player` using a unique key."""
+  deletePlayerByProviderId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayerByProviderIdInput!
+  ): DeletePlayerPayload
+
+  """Deletes a single `PlayersPrivate` using its globally unique id."""
+  deletePlayersPrivateByNodeId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayersPrivateByNodeIdInput!
+  ): DeletePlayersPrivatePayload
+
+  """Deletes a single `PlayersPrivate` using a unique key."""
+  deletePlayersPrivate(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePlayersPrivateInput!
+  ): DeletePlayersPrivatePayload
+  acknowledgeAlert(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: AcknowledgeAlertInput!
+  ): AcknowledgeAlertPayload
+  claimDesk(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: ClaimDeskInput!
+  ): ClaimDeskPayload
+
+  """Create a new feed for the current player, optionally making it public"""
+  createFeed(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateFeedInput!
+  ): CreateFeedPayload
+
+  """Create a new item in a feed owned by the current player"""
+  createFeedItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateFeedItemInput!
+  ): CreateFeedItemPayload
+  createStream(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateStreamInput!
+  ): CreateStreamPayload
+  insertMessage(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: InsertMessageInput!
+  ): InsertMessagePayload
+  ping(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: PingInput!
+  ): PingPayload
+  releaseDesk(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: ReleaseDeskInput!
+  ): ReleaseDeskPayload
+
+  """Subscribe the current player to a feed by its slug"""
+  subscribeFeed(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: SubscribeFeedInput!
+  ): SubscribeFeedPayload
+  updateStatus(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateStatusInput!
+  ): UpdateStatusPayload
+  upsertPlayerItem(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpsertPlayerItemInput!
+  ): UpsertPlayerItemPayload
+}
+
+"""The output of our create `Alert` mutation."""
+type CreateAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Alert` that was created by this mutation."""
+  alert: Alert
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Alert`. May be used by Relay 1."""
+  alertEdge(
+    """The method to use when ordering `Alert`."""
+    orderBy: [AlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): AlertsEdge
+}
+
+"""All input for the create `Alert` mutation."""
+input CreateAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Alert` to be created by this mutation."""
+  alert: AlertInput!
+}
+
+"""An input for mutations affecting `Alert`"""
+input AlertInput {
+  id: BigInt
+  title: String
+  message: String
+  options: JSON
+  meta: JSON
+  createdAt: Datetime
+}
+
+"""The output of our create `Item` mutation."""
+type CreateItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Item` that was created by this mutation."""
+  item: Item
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Item`. May be used by Relay 1."""
+  itemEdge(
+    """The method to use when ordering `Item`."""
+    orderBy: [ItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ItemsEdge
+}
+
+"""All input for the create `Item` mutation."""
+input CreateItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Item` to be created by this mutation."""
+  item: ItemInput!
+}
+
+"""An input for mutations affecting `Item`"""
+input ItemInput {
+  id: BigInt
+  itemKey: String!
+  name: String!
+  type: String
+  description: String
+  price: BigFloat
+  props: JSON
+}
+
+"""The output of our create `Marker` mutation."""
+type CreateMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Marker` that was created by this mutation."""
+  marker: Marker
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Marker`. May be used by Relay 1."""
+  markerEdge(
+    """The method to use when ordering `Marker`."""
+    orderBy: [MarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MarkersEdge
+}
+
+"""All input for the create `Marker` mutation."""
+input CreateMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Marker` to be created by this mutation."""
+  marker: MarkerInput!
+}
+
+"""An input for mutations affecting `Marker`"""
+input MarkerInput {
+  id: BigInt
+  type: String
+  props: JSON
+}
+
+"""The output of our create `Message` mutation."""
+type CreateMessagePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Message` that was created by this mutation."""
+  message: Message
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `Message`."""
+  player: Player
+
+  """Reads a single `Player` that is related to this `Message`."""
+  targetPlayer: Player
+
+  """An edge for our `Message`. May be used by Relay 1."""
+  messageEdge(
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MessagesEdge
+}
+
+"""All input for the create `Message` mutation."""
+input CreateMessageInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Message` to be created by this mutation."""
+  message: MessageInput!
+}
+
+"""An input for mutations affecting `Message`"""
+input MessageInput {
+  id: BigInt
+  playerId: BigInt!
+  targetPlayerId: BigInt
+  message: String!
+  meta: JSON
+  isAiGenerated: Boolean
+  createdAt: Datetime
+  isDirectMessage: Boolean
+}
+
+"""The output of our create `Pet` mutation."""
+type CreatePetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Pet` that was created by this mutation."""
+  pet: Pet
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Pet`. May be used by Relay 1."""
+  petEdge(
+    """The method to use when ordering `Pet`."""
+    orderBy: [PetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PetsEdge
+}
+
+"""All input for the create `Pet` mutation."""
+input CreatePetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Pet` to be created by this mutation."""
+  pet: PetInput!
+}
+
+"""An input for mutations affecting `Pet`"""
+input PetInput {
+  id: BigInt
+  spriteIndex: Int!
+}
+
+"""The output of our create `PlayerAlert` mutation."""
+type CreatePlayerAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerAlert` that was created by this mutation."""
+  playerAlert: PlayerAlert
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerAlert`."""
+  player: Player
+
+  """Reads a single `Alert` that is related to this `PlayerAlert`."""
+  alert: Alert
+
+  """An edge for our `PlayerAlert`. May be used by Relay 1."""
+  playerAlertEdge(
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerAlertsEdge
+}
+
+"""All input for the create `PlayerAlert` mutation."""
+input CreatePlayerAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayerAlert` to be created by this mutation."""
+  playerAlert: PlayerAlertInput!
+}
+
+"""An input for mutations affecting `PlayerAlert`"""
+input PlayerAlertInput {
+  id: BigInt
+  playerId: BigInt!
+  alertId: BigInt!
+  response: String
+  acknowledgedAt: Datetime
+  createdAt: Datetime
+}
+
+"""The output of our create `PlayerItem` mutation."""
+type CreatePlayerItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerItem` that was created by this mutation."""
+  playerItem: PlayerItem
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerItem`."""
+  player: Player
+
+  """Reads a single `Item` that is related to this `PlayerItem`."""
+  item: Item
+
+  """An edge for our `PlayerItem`. May be used by Relay 1."""
+  playerItemEdge(
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerItemsEdge
+}
+
+"""All input for the create `PlayerItem` mutation."""
+input CreatePlayerItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayerItem` to be created by this mutation."""
+  playerItem: PlayerItemInput!
+}
+
+"""An input for mutations affecting `PlayerItem`"""
+input PlayerItemInput {
+  id: BigInt
+  playerId: BigInt!
+  itemId: BigInt!
+  createdAt: Datetime
+  isEquipped: Boolean
+  props: JSON
+}
+
+"""The output of our create `PlayerMarker` mutation."""
+type CreatePlayerMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerMarker` that was created by this mutation."""
+  playerMarker: PlayerMarker
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerMarker`."""
+  player: Player
+
+  """Reads a single `Marker` that is related to this `PlayerMarker`."""
+  marker: Marker
+
+  """An edge for our `PlayerMarker`. May be used by Relay 1."""
+  playerMarkerEdge(
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerMarkersEdge
+}
+
+"""All input for the create `PlayerMarker` mutation."""
+input CreatePlayerMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayerMarker` to be created by this mutation."""
+  playerMarker: PlayerMarkerInput!
+}
+
+"""An input for mutations affecting `PlayerMarker`"""
+input PlayerMarkerInput {
+  playerId: BigInt!
+  markerId: BigInt!
+  props: JSON
+}
+
+"""The output of our create `PlayerPet` mutation."""
+type CreatePlayerPetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerPet` that was created by this mutation."""
+  playerPet: PlayerPet
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerPet`."""
+  player: Player
+
+  """Reads a single `Pet` that is related to this `PlayerPet`."""
+  pet: Pet
+
+  """An edge for our `PlayerPet`. May be used by Relay 1."""
+  playerPetEdge(
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerPetsEdge
+}
+
+"""All input for the create `PlayerPet` mutation."""
+input CreatePlayerPetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayerPet` to be created by this mutation."""
+  playerPet: PlayerPetInput!
+}
+
+"""An input for mutations affecting `PlayerPet`"""
+input PlayerPetInput {
+  playerId: BigInt!
+  petId: BigInt!
+  name: String
+  level: Int
+  xp: Int
+  createdAt: Datetime
+}
+
+"""The output of our create `PlayerSubscription` mutation."""
+type CreatePlayerSubscriptionPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerSubscription` that was created by this mutation."""
+  playerSubscription: PlayerSubscription
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerSubscription`."""
+  player: Player
+
+  """Reads a single `Feed` that is related to this `PlayerSubscription`."""
+  feed: Feed
+
+  """An edge for our `PlayerSubscription`. May be used by Relay 1."""
+  playerSubscriptionEdge(
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerSubscriptionsEdge
+}
+
+"""All input for the create `PlayerSubscription` mutation."""
+input CreatePlayerSubscriptionInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayerSubscription` to be created by this mutation."""
+  playerSubscription: PlayerSubscriptionInput!
+}
+
+"""An input for mutations affecting `PlayerSubscription`"""
+input PlayerSubscriptionInput {
+  playerId: BigInt!
+  feedId: BigInt!
+  createdAt: Datetime
+}
+
+"""The output of our create `Player` mutation."""
+type CreatePlayerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Player` that was created by this mutation."""
+  player: Player
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Player`. May be used by Relay 1."""
+  playerEdge(
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersEdge
+}
+
+"""All input for the create `Player` mutation."""
+input CreatePlayerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Player` to be created by this mutation."""
+  player: PlayerInput!
+}
+
+"""An input for mutations affecting `Player`"""
+input PlayerInput {
+  id: BigInt
+  providerId: String
+  username: String!
+  meta: JSON
+  position: JSON
+  updatedAt: Datetime
+  wallets: JSON
+}
+
+"""The output of our create `PlayersPrivate` mutation."""
+type CreatePlayersPrivatePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayersPrivate` that was created by this mutation."""
+  playersPrivate: PlayersPrivate
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayersPrivate`."""
+  player: Player
+
+  """An edge for our `PlayersPrivate`. May be used by Relay 1."""
+  playersPrivateEdge(
+    """The method to use when ordering `PlayersPrivate`."""
+    orderBy: [PlayersPrivatesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersPrivatesEdge
+}
+
+"""All input for the create `PlayersPrivate` mutation."""
+input CreatePlayersPrivateInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `PlayersPrivate` to be created by this mutation."""
+  playersPrivate: PlayersPrivateInput!
+}
+
+"""An input for mutations affecting `PlayersPrivate`"""
+input PlayersPrivateInput {
+  playerId: BigInt!
+  aiPrompt: String
+  assistantId: String
+  updatedAt: Datetime
+}
+
+"""The output of our update `Alert` mutation."""
+type UpdateAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Alert` that was updated by this mutation."""
+  alert: Alert
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Alert`. May be used by Relay 1."""
+  alertEdge(
+    """The method to use when ordering `Alert`."""
+    orderBy: [AlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): AlertsEdge
+}
+
+"""All input for the `updateAlertByNodeId` mutation."""
+input UpdateAlertByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Alert` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Alert` being updated.
+  """
+  patch: AlertPatch!
+}
+
+"""
+Represents an update to a `Alert`. Fields that are set will be updated.
+"""
+input AlertPatch {
+  id: BigInt
+  title: String
+  message: String
+  options: JSON
+  meta: JSON
+  createdAt: Datetime
+}
+
+"""All input for the `updateAlert` mutation."""
+input UpdateAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Alert` being updated.
+  """
+  patch: AlertPatch!
+  id: BigInt!
+}
+
+"""The output of our update `Item` mutation."""
+type UpdateItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Item` that was updated by this mutation."""
+  item: Item
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Item`. May be used by Relay 1."""
+  itemEdge(
+    """The method to use when ordering `Item`."""
+    orderBy: [ItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ItemsEdge
+}
+
+"""All input for the `updateItemByNodeId` mutation."""
+input UpdateItemByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Item` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Item` being updated.
+  """
+  patch: ItemPatch!
+}
+
+"""Represents an update to a `Item`. Fields that are set will be updated."""
+input ItemPatch {
+  id: BigInt
+  itemKey: String
+  name: String
+  type: String
+  description: String
+  price: BigFloat
+  props: JSON
+}
+
+"""All input for the `updateItem` mutation."""
+input UpdateItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Item` being updated.
+  """
+  patch: ItemPatch!
+  id: BigInt!
+}
+
+"""The output of our update `Marker` mutation."""
+type UpdateMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Marker` that was updated by this mutation."""
+  marker: Marker
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Marker`. May be used by Relay 1."""
+  markerEdge(
+    """The method to use when ordering `Marker`."""
+    orderBy: [MarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MarkersEdge
+}
+
+"""All input for the `updateMarkerByNodeId` mutation."""
+input UpdateMarkerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Marker` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Marker` being updated.
+  """
+  patch: MarkerPatch!
+}
+
+"""
+Represents an update to a `Marker`. Fields that are set will be updated.
+"""
+input MarkerPatch {
+  id: BigInt
+  type: String
+  props: JSON
+}
+
+"""All input for the `updateMarker` mutation."""
+input UpdateMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Marker` being updated.
+  """
+  patch: MarkerPatch!
+  id: BigInt!
+}
+
+"""The output of our update `Message` mutation."""
+type UpdateMessagePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Message` that was updated by this mutation."""
+  message: Message
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `Message`."""
+  player: Player
+
+  """Reads a single `Player` that is related to this `Message`."""
+  targetPlayer: Player
+
+  """An edge for our `Message`. May be used by Relay 1."""
+  messageEdge(
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MessagesEdge
+}
+
+"""All input for the `updateMessageByNodeId` mutation."""
+input UpdateMessageByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Message` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Message` being updated.
+  """
+  patch: MessagePatch!
+}
+
+"""
+Represents an update to a `Message`. Fields that are set will be updated.
+"""
+input MessagePatch {
+  id: BigInt
+  playerId: BigInt
+  targetPlayerId: BigInt
+  message: String
+  meta: JSON
+  isAiGenerated: Boolean
+  createdAt: Datetime
+  isDirectMessage: Boolean
+}
+
+"""All input for the `updateMessage` mutation."""
+input UpdateMessageInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Message` being updated.
+  """
+  patch: MessagePatch!
+  id: BigInt!
+}
+
+"""The output of our update `Pet` mutation."""
+type UpdatePetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Pet` that was updated by this mutation."""
+  pet: Pet
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Pet`. May be used by Relay 1."""
+  petEdge(
+    """The method to use when ordering `Pet`."""
+    orderBy: [PetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PetsEdge
+}
+
+"""All input for the `updatePetByNodeId` mutation."""
+input UpdatePetByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Pet` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Pet` being updated.
+  """
+  patch: PetPatch!
+}
+
+"""Represents an update to a `Pet`. Fields that are set will be updated."""
+input PetPatch {
+  id: BigInt
+  spriteIndex: Int
+}
+
+"""All input for the `updatePet` mutation."""
+input UpdatePetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Pet` being updated.
+  """
+  patch: PetPatch!
+  id: BigInt!
+}
+
+"""All input for the `updatePetBySpriteIndex` mutation."""
+input UpdatePetBySpriteIndexInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Pet` being updated.
+  """
+  patch: PetPatch!
+  spriteIndex: Int!
+}
+
+"""The output of our update `PlayerAlert` mutation."""
+type UpdatePlayerAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerAlert` that was updated by this mutation."""
+  playerAlert: PlayerAlert
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerAlert`."""
+  player: Player
+
+  """Reads a single `Alert` that is related to this `PlayerAlert`."""
+  alert: Alert
+
+  """An edge for our `PlayerAlert`. May be used by Relay 1."""
+  playerAlertEdge(
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerAlertsEdge
+}
+
+"""All input for the `updatePlayerAlertByNodeId` mutation."""
+input UpdatePlayerAlertByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerAlert` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `PlayerAlert` being updated.
+  """
+  patch: PlayerAlertPatch!
+}
+
+"""
+Represents an update to a `PlayerAlert`. Fields that are set will be updated.
+"""
+input PlayerAlertPatch {
+  id: BigInt
+  playerId: BigInt
+  alertId: BigInt
+  response: String
+  acknowledgedAt: Datetime
+  createdAt: Datetime
+}
+
+"""All input for the `updatePlayerAlert` mutation."""
+input UpdatePlayerAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `PlayerAlert` being updated.
+  """
+  patch: PlayerAlertPatch!
+  id: BigInt!
+}
+
+"""The output of our update `PlayerItem` mutation."""
+type UpdatePlayerItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerItem` that was updated by this mutation."""
+  playerItem: PlayerItem
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerItem`."""
+  player: Player
+
+  """Reads a single `Item` that is related to this `PlayerItem`."""
+  item: Item
+
+  """An edge for our `PlayerItem`. May be used by Relay 1."""
+  playerItemEdge(
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerItemsEdge
+}
+
+"""All input for the `updatePlayerItemByNodeId` mutation."""
+input UpdatePlayerItemByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerItem` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `PlayerItem` being updated.
+  """
+  patch: PlayerItemPatch!
+}
+
+"""
+Represents an update to a `PlayerItem`. Fields that are set will be updated.
+"""
+input PlayerItemPatch {
+  id: BigInt
+  playerId: BigInt
+  itemId: BigInt
+  createdAt: Datetime
+  isEquipped: Boolean
+  props: JSON
+}
+
+"""All input for the `updatePlayerItem` mutation."""
+input UpdatePlayerItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `PlayerItem` being updated.
+  """
+  patch: PlayerItemPatch!
+  id: BigInt!
+}
+
+"""The output of our update `PlayerMarker` mutation."""
+type UpdatePlayerMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerMarker` that was updated by this mutation."""
+  playerMarker: PlayerMarker
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerMarker`."""
+  player: Player
+
+  """Reads a single `Marker` that is related to this `PlayerMarker`."""
+  marker: Marker
+
+  """An edge for our `PlayerMarker`. May be used by Relay 1."""
+  playerMarkerEdge(
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerMarkersEdge
+}
+
+"""All input for the `updatePlayerMarkerByNodeId` mutation."""
+input UpdatePlayerMarkerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerMarker` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `PlayerMarker` being updated.
+  """
+  patch: PlayerMarkerPatch!
+}
+
+"""
+Represents an update to a `PlayerMarker`. Fields that are set will be updated.
+"""
+input PlayerMarkerPatch {
+  playerId: BigInt
+  markerId: BigInt
+  props: JSON
+}
+
+"""All input for the `updatePlayerMarker` mutation."""
+input UpdatePlayerMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `PlayerMarker` being updated.
+  """
+  patch: PlayerMarkerPatch!
+  playerId: BigInt!
+  markerId: BigInt!
+}
+
+"""The output of our update `PlayerPet` mutation."""
+type UpdatePlayerPetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerPet` that was updated by this mutation."""
+  playerPet: PlayerPet
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerPet`."""
+  player: Player
+
+  """Reads a single `Pet` that is related to this `PlayerPet`."""
+  pet: Pet
+
+  """An edge for our `PlayerPet`. May be used by Relay 1."""
+  playerPetEdge(
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerPetsEdge
+}
+
+"""All input for the `updatePlayerPetByNodeId` mutation."""
+input UpdatePlayerPetByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerPet` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `PlayerPet` being updated.
+  """
+  patch: PlayerPetPatch!
+}
+
+"""
+Represents an update to a `PlayerPet`. Fields that are set will be updated.
+"""
+input PlayerPetPatch {
+  playerId: BigInt
+  petId: BigInt
+  name: String
+  level: Int
+  xp: Int
+  createdAt: Datetime
+}
+
+"""All input for the `updatePlayerPet` mutation."""
+input UpdatePlayerPetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `PlayerPet` being updated.
+  """
+  patch: PlayerPetPatch!
+  playerId: BigInt!
+  petId: BigInt!
+}
+
+"""The output of our update `Player` mutation."""
+type UpdatePlayerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Player` that was updated by this mutation."""
+  player: Player
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Player`. May be used by Relay 1."""
+  playerEdge(
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersEdge
+}
+
+"""All input for the `updatePlayerByNodeId` mutation."""
+input UpdatePlayerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Player` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Player` being updated.
+  """
+  patch: PlayerPatch!
+}
+
+"""
+Represents an update to a `Player`. Fields that are set will be updated.
+"""
+input PlayerPatch {
+  id: BigInt
+  providerId: String
+  username: String
+  meta: JSON
+  position: JSON
+  updatedAt: Datetime
+  wallets: JSON
+}
+
+"""All input for the `updatePlayer` mutation."""
+input UpdatePlayerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Player` being updated.
+  """
+  patch: PlayerPatch!
+  id: BigInt!
+}
+
+"""All input for the `updatePlayerByProviderId` mutation."""
+input UpdatePlayerByProviderIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Player` being updated.
+  """
+  patch: PlayerPatch!
+  providerId: String!
+}
+
+"""The output of our update `PlayersPrivate` mutation."""
+type UpdatePlayersPrivatePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayersPrivate` that was updated by this mutation."""
+  playersPrivate: PlayersPrivate
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayersPrivate`."""
+  player: Player
+
+  """An edge for our `PlayersPrivate`. May be used by Relay 1."""
+  playersPrivateEdge(
+    """The method to use when ordering `PlayersPrivate`."""
+    orderBy: [PlayersPrivatesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersPrivatesEdge
+}
+
+"""All input for the `updatePlayersPrivateByNodeId` mutation."""
+input UpdatePlayersPrivateByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayersPrivate` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `PlayersPrivate` being updated.
+  """
+  patch: PlayersPrivatePatch!
+}
+
+"""
+Represents an update to a `PlayersPrivate`. Fields that are set will be updated.
+"""
+input PlayersPrivatePatch {
+  playerId: BigInt
+  aiPrompt: String
+  assistantId: String
+  updatedAt: Datetime
+}
+
+"""All input for the `updatePlayersPrivate` mutation."""
+input UpdatePlayersPrivateInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `PlayersPrivate` being updated.
+  """
+  patch: PlayersPrivatePatch!
+  playerId: BigInt!
+}
+
+"""The output of our delete `Alert` mutation."""
+type DeleteAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Alert` that was deleted by this mutation."""
+  alert: Alert
+  deletedAlertNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Alert`. May be used by Relay 1."""
+  alertEdge(
+    """The method to use when ordering `Alert`."""
+    orderBy: [AlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): AlertsEdge
+}
+
+"""All input for the `deleteAlertByNodeId` mutation."""
+input DeleteAlertByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Alert` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deleteAlert` mutation."""
+input DeleteAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `Item` mutation."""
+type DeleteItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Item` that was deleted by this mutation."""
+  item: Item
+  deletedItemNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Item`. May be used by Relay 1."""
+  itemEdge(
+    """The method to use when ordering `Item`."""
+    orderBy: [ItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ItemsEdge
+}
+
+"""All input for the `deleteItemByNodeId` mutation."""
+input DeleteItemByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Item` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deleteItem` mutation."""
+input DeleteItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `Marker` mutation."""
+type DeleteMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Marker` that was deleted by this mutation."""
+  marker: Marker
+  deletedMarkerNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Marker`. May be used by Relay 1."""
+  markerEdge(
+    """The method to use when ordering `Marker`."""
+    orderBy: [MarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MarkersEdge
+}
+
+"""All input for the `deleteMarkerByNodeId` mutation."""
+input DeleteMarkerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Marker` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deleteMarker` mutation."""
+input DeleteMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `Message` mutation."""
+type DeleteMessagePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Message` that was deleted by this mutation."""
+  message: Message
+  deletedMessageNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `Message`."""
+  player: Player
+
+  """Reads a single `Player` that is related to this `Message`."""
+  targetPlayer: Player
+
+  """An edge for our `Message`. May be used by Relay 1."""
+  messageEdge(
+    """The method to use when ordering `Message`."""
+    orderBy: [MessagesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MessagesEdge
+}
+
+"""All input for the `deleteMessageByNodeId` mutation."""
+input DeleteMessageByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Message` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deleteMessage` mutation."""
+input DeleteMessageInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `Pet` mutation."""
+type DeletePetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Pet` that was deleted by this mutation."""
+  pet: Pet
+  deletedPetNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Pet`. May be used by Relay 1."""
+  petEdge(
+    """The method to use when ordering `Pet`."""
+    orderBy: [PetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PetsEdge
+}
+
+"""All input for the `deletePetByNodeId` mutation."""
+input DeletePetByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Pet` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePet` mutation."""
+input DeletePetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""All input for the `deletePetBySpriteIndex` mutation."""
+input DeletePetBySpriteIndexInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  spriteIndex: Int!
+}
+
+"""The output of our delete `PlayerAlert` mutation."""
+type DeletePlayerAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerAlert` that was deleted by this mutation."""
+  playerAlert: PlayerAlert
+  deletedPlayerAlertNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerAlert`."""
+  player: Player
+
+  """Reads a single `Alert` that is related to this `PlayerAlert`."""
+  alert: Alert
+
+  """An edge for our `PlayerAlert`. May be used by Relay 1."""
+  playerAlertEdge(
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerAlertsEdge
+}
+
+"""All input for the `deletePlayerAlertByNodeId` mutation."""
+input DeletePlayerAlertByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerAlert` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayerAlert` mutation."""
+input DeletePlayerAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `PlayerItem` mutation."""
+type DeletePlayerItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerItem` that was deleted by this mutation."""
+  playerItem: PlayerItem
+  deletedPlayerItemNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerItem`."""
+  player: Player
+
+  """Reads a single `Item` that is related to this `PlayerItem`."""
+  item: Item
+
+  """An edge for our `PlayerItem`. May be used by Relay 1."""
+  playerItemEdge(
+    """The method to use when ordering `PlayerItem`."""
+    orderBy: [PlayerItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerItemsEdge
+}
+
+"""All input for the `deletePlayerItemByNodeId` mutation."""
+input DeletePlayerItemByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerItem` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayerItem` mutation."""
+input DeletePlayerItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""The output of our delete `PlayerMarker` mutation."""
+type DeletePlayerMarkerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerMarker` that was deleted by this mutation."""
+  playerMarker: PlayerMarker
+  deletedPlayerMarkerNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerMarker`."""
+  player: Player
+
+  """Reads a single `Marker` that is related to this `PlayerMarker`."""
+  marker: Marker
+
+  """An edge for our `PlayerMarker`. May be used by Relay 1."""
+  playerMarkerEdge(
+    """The method to use when ordering `PlayerMarker`."""
+    orderBy: [PlayerMarkersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerMarkersEdge
+}
+
+"""All input for the `deletePlayerMarkerByNodeId` mutation."""
+input DeletePlayerMarkerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerMarker` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayerMarker` mutation."""
+input DeletePlayerMarkerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerId: BigInt!
+  markerId: BigInt!
+}
+
+"""The output of our delete `PlayerPet` mutation."""
+type DeletePlayerPetPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerPet` that was deleted by this mutation."""
+  playerPet: PlayerPet
+  deletedPlayerPetNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerPet`."""
+  player: Player
+
+  """Reads a single `Pet` that is related to this `PlayerPet`."""
+  pet: Pet
+
+  """An edge for our `PlayerPet`. May be used by Relay 1."""
+  playerPetEdge(
+    """The method to use when ordering `PlayerPet`."""
+    orderBy: [PlayerPetsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerPetsEdge
+}
+
+"""All input for the `deletePlayerPetByNodeId` mutation."""
+input DeletePlayerPetByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerPet` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayerPet` mutation."""
+input DeletePlayerPetInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerId: BigInt!
+  petId: BigInt!
+}
+
+"""The output of our delete `PlayerSubscription` mutation."""
+type DeletePlayerSubscriptionPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayerSubscription` that was deleted by this mutation."""
+  playerSubscription: PlayerSubscription
+  deletedPlayerSubscriptionNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerSubscription`."""
+  player: Player
+
+  """Reads a single `Feed` that is related to this `PlayerSubscription`."""
+  feed: Feed
+
+  """An edge for our `PlayerSubscription`. May be used by Relay 1."""
+  playerSubscriptionEdge(
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerSubscriptionsEdge
+}
+
+"""All input for the `deletePlayerSubscriptionByNodeId` mutation."""
+input DeletePlayerSubscriptionByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayerSubscription` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayerSubscription` mutation."""
+input DeletePlayerSubscriptionInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerId: BigInt!
+  feedId: BigInt!
+}
+
+"""The output of our delete `Player` mutation."""
+type DeletePlayerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Player` that was deleted by this mutation."""
+  player: Player
+  deletedPlayerNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Player`. May be used by Relay 1."""
+  playerEdge(
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersEdge
+}
+
+"""All input for the `deletePlayerByNodeId` mutation."""
+input DeletePlayerByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Player` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayer` mutation."""
+input DeletePlayerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: BigInt!
+}
+
+"""All input for the `deletePlayerByProviderId` mutation."""
+input DeletePlayerByProviderIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  providerId: String!
+}
+
+"""The output of our delete `PlayersPrivate` mutation."""
+type DeletePlayersPrivatePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `PlayersPrivate` that was deleted by this mutation."""
+  playersPrivate: PlayersPrivate
+  deletedPlayersPrivateNodeId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayersPrivate`."""
+  player: Player
+
+  """An edge for our `PlayersPrivate`. May be used by Relay 1."""
+  playersPrivateEdge(
+    """The method to use when ordering `PlayersPrivate`."""
+    orderBy: [PlayersPrivatesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersPrivatesEdge
+}
+
+"""All input for the `deletePlayersPrivateByNodeId` mutation."""
+input DeletePlayersPrivateByNodeIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `PlayersPrivate` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""All input for the `deletePlayersPrivate` mutation."""
+input DeletePlayersPrivateInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerId: BigInt!
+}
+
+"""The output of our `acknowledgeAlert` mutation."""
+type AcknowledgeAlertPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  playerAlert: PlayerAlert
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerAlert`."""
+  player: Player
+
+  """Reads a single `Alert` that is related to this `PlayerAlert`."""
+  alert: Alert
+
+  """An edge for our `PlayerAlert`. May be used by Relay 1."""
+  playerAlertEdge(
+    """The method to use when ordering `PlayerAlert`."""
+    orderBy: [PlayerAlertsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerAlertsEdge
+}
+
+"""All input for the `acknowledgeAlert` mutation."""
+input AcknowledgeAlertInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerAlertId: BigInt
+  response: String
+}
+
+"""The output of our `claimDesk` mutation."""
+type ClaimDeskPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `claimDesk` mutation."""
+input ClaimDeskInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  deskMarkerId: BigInt
+}
+
+"""The output of our `createFeed` mutation."""
+type CreateFeedPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  feed: Feed
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `Feed`."""
+  player: Player
+
+  """An edge for our `Feed`. May be used by Relay 1."""
+  feedEdge(
+    """The method to use when ordering `Feed`."""
+    orderBy: [FeedsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): FeedsEdge
+}
+
+"""All input for the `createFeed` mutation."""
+input CreateFeedInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  feedName: String
+  isPublic: Boolean
+}
+
+"""The output of our `createFeedItem` mutation."""
+type CreateFeedItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  feedItem: FeedItem
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Feed` that is related to this `FeedItem`."""
+  feed: Feed
+
+  """An edge for our `FeedItem`. May be used by Relay 1."""
+  feedItemEdge(
+    """The method to use when ordering `FeedItem`."""
+    orderBy: [FeedItemsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): FeedItemsEdge
+}
+
+"""All input for the `createFeedItem` mutation."""
+input CreateFeedItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  feedId: BigInt
+  itemContent: JSON
+}
+
+"""The output of our `createStream` mutation."""
+type CreateStreamPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  stream: Stream
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `Stream`."""
+  player: Player
+
+  """An edge for our `Stream`. May be used by Relay 1."""
+  streamEdge(
+    """The method to use when ordering `Stream`."""
+    orderBy: [StreamsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): StreamsEdge
+}
+
+"""All input for the `createStream` mutation."""
+input CreateStreamInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our `insertMessage` mutation."""
+type InsertMessagePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `insertMessage` mutation."""
+input InsertMessageInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  message: String
+  targetPlayerId: BigInt
+}
+
+"""The output of our `ping` mutation."""
+type PingPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  player: Player
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Player`. May be used by Relay 1."""
+  playerEdge(
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersEdge
+}
+
+"""All input for the `ping` mutation."""
+input PingInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our `releaseDesk` mutation."""
+type ReleaseDeskPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `releaseDesk` mutation."""
+input ReleaseDeskInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our `subscribeFeed` mutation."""
+type SubscribeFeedPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  playerSubscription: PlayerSubscription
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Player` that is related to this `PlayerSubscription`."""
+  player: Player
+
+  """Reads a single `Feed` that is related to this `PlayerSubscription`."""
+  feed: Feed
+
+  """An edge for our `PlayerSubscription`. May be used by Relay 1."""
+  playerSubscriptionEdge(
+    """The method to use when ordering `PlayerSubscription`."""
+    orderBy: [PlayerSubscriptionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayerSubscriptionsEdge
+}
+
+"""All input for the `subscribeFeed` mutation."""
+input SubscribeFeedInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  feedSlug: String
+}
+
+"""The output of our `updateStatus` mutation."""
+type UpdateStatusPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  player: Player
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Player`. May be used by Relay 1."""
+  playerEdge(
+    """The method to use when ordering `Player`."""
+    orderBy: [PlayersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PlayersEdge
+}
+
+"""All input for the `updateStatus` mutation."""
+input UpdateStatusInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  playerSecret: String
+  status: JSON
+}
+
+"""The output of our `upsertPlayerItem` mutation."""
+type UpsertPlayerItemPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `upsertPlayerItem` mutation."""
+input UpsertPlayerItemInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  targetItemId: BigInt
+  props: JSON
+}
+
+"""
+The root subscription type: contains realtime events you can subscribe to with the `subscription` operation.
+"""
+type Subscription {
+  listen(topic: String!): ListenPayload!
+}
+
+type ListenPayload {
+  """
+  Our root query field type. Allows us to run any query from our subscription payload.
+  """
+  query: Query
+  relatedNode: Node
+  relatedNodeId: ID
+}

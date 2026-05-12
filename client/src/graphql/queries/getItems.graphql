@@ -1,0 +1,13 @@
+query GetItems {
+  items {
+    nodes {
+      nodeId
+      id
+      itemKey
+      name
+      type
+      description
+      props
+    }
+  }
+}

@@ -1,0 +1,95 @@
+services:
+  db:
+    image: postgis/postgis:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: flurryuser
+      POSTGRES_PASSWORD: flurrypassword
+      POSTGRES_DB: flurrydb
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - flurry-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flurryuser -d flurrydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  migrate:
+    image: node:21-alpine
+    working_dir: /workspace
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://flurryuser:flurrypassword@db:5432/flurrydb?sslmode=disable
+      DBMATE_MIGRATIONS_DIR: ./migrations
+      DBMATE_SCHEMA_FILE: ./schema.sql
+    volumes:
+      - ./:/workspace
+    command: >
+      sh -lc "npm install -g pnpm && pnpm install --force && cd db && pnpm migrate"
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      PORT: 3000
+      DATABASE_URL: postgres://flurryuser:flurrypassword@db:5432/flurrydb?sslmode=disable
+      SERVER_SECRET_KEY: ${SERVER_SECRET_KEY:-local-dev-secret}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+      CLOUDFLARE_API_KEY: ${CLOUDFLARE_API_KEY:-}
+      CLOUDFLARE_STREAM_WEBHOOK_PATH: ${CLOUDFLARE_STREAM_WEBHOOK_PATH:-/streamWebhookHandler}
+      CLOUDFLARE_CUSTOM_URL: ${CLOUDFLARE_CUSTOM_URL:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      NOTIFICATION_EMAIL_SENDER: ${NOTIFICATION_EMAIL_SENDER:-}
+      NOTIFICATION_EMAIL_RECIPIENT: ${NOTIFICATION_EMAIL_RECIPIENT:-}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+      args:
+        VITE_HTTP_LINK: ${VITE_HTTP_LINK:-https://api.flurry.town/graphql}
+        VITE_WS_LINK: ${VITE_WS_LINK:-wss://api.flurry.town/graphql}
+        VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN: ${VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN:-}
+        VITE_MOONBEAM_RPC_URL: ${VITE_MOONBEAM_RPC_URL:-}
+        VITE_MOONBEAM_CHAIN_ID: ${VITE_MOONBEAM_CHAIN_ID:-}
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  homepage:
+    build:
+      context: .
+      dockerfile: Dockerfile.homepage
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
+  docs:
+    image: nginx:alpine
+    volumes:
+      - ./docs:/usr/share/nginx/html:ro
+    ports:
+      - "3002:80"
+    restart: unless-stopped
+
+volumes:
+  flurry-postgres-data:

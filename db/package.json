@@ -1,0 +1,12 @@
+{
+  "name": "db",
+  "scripts": {
+    "migrate": "dbmate up && dotenv -e .env -- graphile-worker --schema-only",
+    "createdb": "bash ./scripts/createdb.sh"
+  },
+  "dependencies": {
+    "dbmate": "^1.10.0",
+    "dotenv-cli": "^7.4.2",
+    "graphile-worker": "^0.16.6"
+  }
+}

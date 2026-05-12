@@ -1,0 +1,19 @@
+{
+  "name": "hive",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "db:init": "pnpm --filter ./db createdb",
+    "db:migrate": "pnpm -r --filter {./db/**} migrate",
+    "dev:client": "pnpm -r --filter {./client/**} dev",
+    "dev:api": "pnpm -r --filter {./api/**} dev",
+    "dev": "pnpm -r dev",
+    "build:api": "pnpm -r --filter {./api/**} build",
+    "build:client": "pnpm -r --filter {./client/**} build",
+    "codegen": "pnpm -r --filter {./client/**} codegen"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "pnpm": "^9.6.0"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "flurry-api",
+  "author": "B. Jordan",
+  "version": "1.0.0",
+  "node": ">=21.1.0",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start": "node dist/index.js",
+    "copy-graphiql": "copyfiles -u 1 src/graphiql.html dist",
+    "build": "tsc && npm run copy-graphiql",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
+    "@graphile/pg-pubsub": "^4.13.0",
+    "copyfiles": "^2.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "graphile-worker": "^0.16.6",
+    "openai": "^4.58.1",
+    "pg": "^8.9.0",
+    "postgraphile": "^4.13.0",
+    "postgraphile-plugin-connection-filter": "^2.3.0",
+    "resend": "^4.1.1",
+    "socket.io": "^4.6.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.11.6",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "^8.57.0",
+    "globals": "^15.3.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.11.0"
+  }
+}

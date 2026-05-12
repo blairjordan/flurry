@@ -1,0 +1,38 @@
+FROM node:21-alpine AS build
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY package.json pnpm-workspace.yaml ./
+COPY client/package.json ./client/
+
+ARG VITE_HTTP_LINK
+ARG VITE_WS_LINK
+ARG VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN
+ARG VITE_MOONBEAM_RPC_URL
+ARG VITE_MOONBEAM_CHAIN_ID
+
+ENV VITE_HTTP_LINK=$VITE_HTTP_LINK
+ENV VITE_WS_LINK=$VITE_WS_LINK
+ENV VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN=$VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN
+ENV VITE_MOONBEAM_RPC_URL=$VITE_MOONBEAM_RPC_URL
+ENV VITE_MOONBEAM_CHAIN_ID=$VITE_MOONBEAM_CHAIN_ID
+
+RUN pnpm install --force
+
+COPY client ./client
+
+WORKDIR /app/client
+
+RUN pnpm install --force
+RUN pnpm run build
+
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+
+COPY --from=build /app/client/dist .
+COPY client/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

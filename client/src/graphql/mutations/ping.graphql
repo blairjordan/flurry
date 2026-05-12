@@ -1,0 +1,5 @@
+mutation Ping {
+  ping(input: {}) {
+    clientMutationId
+  }
+}

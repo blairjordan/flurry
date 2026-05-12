@@ -1,0 +1,76 @@
+fragment GetPlayerItemFields on PlayerItem {
+  nodeId
+  id
+  itemId
+  playerId
+  props
+  item {
+    nodeId
+    id
+    itemKey
+    name
+    type
+    description
+    props
+  }
+}
+
+fragment GetPlayerMarkerFields on PlayerMarker {
+  nodeId
+  props
+  marker {
+    nodeId
+    id
+    type
+    props
+  }
+}
+
+fragment GetPlayerPrivateFields on PlayersPrivate {
+  nodeId
+  aiPrompt
+}
+
+fragment GetPlayerPets on PlayerPet {
+  nodeId
+  name
+  petId
+  pet {
+    spriteIndex
+  }
+}
+
+query GetCurrentPlayer {
+  currentPlayer {
+    nodeId
+    id
+    username
+    meta
+    position
+    currentStreamKey
+    playerItems {
+      nodes {
+        ...GetPlayerItemFields
+      }
+    }
+    playerMarkers {
+      nodes {
+        ...GetPlayerMarkerFields
+      }
+    }
+    playersPrivate {
+      ...GetPlayerPrivateFields
+    }
+    playerPets {
+      nodes {
+        ...GetPlayerPets
+      }
+    }
+    stream {
+      viewerUrl
+      rtmpsUrl
+      providerId
+      status
+    }
+  }
+}

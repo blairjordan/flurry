@@ -1,0 +1,10 @@
+mutation UpdatePlayerPrivate($playerId: BigInt!, $aiPrompt: String!) {
+  updatePlayersPrivate(
+    input: { playerId: $playerId, patch: { aiPrompt: $aiPrompt } }
+  ) {
+    playersPrivate {
+      nodeId
+      aiPrompt
+    }
+  }
+}

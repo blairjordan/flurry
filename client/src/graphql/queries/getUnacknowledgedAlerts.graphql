@@ -1,0 +1,16 @@
+query GetUnacknowledgedAlerts {
+  playerAlerts(condition: { acknowledgedAt: null }) {
+    nodes {
+      id
+      nodeId
+      alertId
+      alert {
+        id
+        title
+        message
+        options
+        meta
+      }
+    }
+  }
+}

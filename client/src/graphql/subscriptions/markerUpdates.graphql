@@ -1,0 +1,26 @@
+fragment PlayerFields on Player {
+  nodeId
+  id
+  username
+  meta
+  isOnline
+}
+
+subscription MarkerUpdates {
+  listen(topic: "marker_updated") {
+    relatedNode {
+      ... on Marker {
+        id
+        type
+        props
+        playerMarkers {
+          nodes {
+            player {
+              ...PlayerFields
+            }
+          }
+        }
+      }
+    }
+  }
+}

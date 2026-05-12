@@ -1,0 +1,5 @@
+mutation UpsertPlayerItem($itemId: BigInt!, $props: JSON = "{}") {
+  upsertPlayerItem(input: { targetItemId: $itemId, props: $props }) {
+    clientMutationId
+  }
+}

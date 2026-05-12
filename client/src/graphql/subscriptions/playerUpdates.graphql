@@ -1,0 +1,68 @@
+fragment PlayerItemFields on PlayerItem {
+  nodeId
+  id
+  props
+  item {
+    nodeId
+    id
+    itemKey
+    name
+    type
+    description
+    props
+  }
+}
+
+fragment MarkerItemFields on Marker {
+  nodeId
+  id
+  type
+  props
+}
+
+fragment GetPlayerPets on PlayerPet {
+  nodeId
+  name
+  petId
+  pet {
+    spriteIndex
+  }
+}
+subscription PlayerUpdates {
+  listen(topic: "player_updated") {
+    relatedNode {
+      ... on Player {
+        nodeId
+        id
+        position
+        username
+        meta
+        isOnline
+        playerPets {
+          nodes {
+            ...GetPlayerPets
+          }
+        }
+        playerItems {
+          nodes {
+            ...PlayerItemFields
+          }
+        }
+        playerMarkers {
+          nodes {
+            marker {
+              ...MarkerItemFields
+            }
+          }
+        }
+        stream {
+          viewerUrl
+          rtmpsUrl
+          providerId
+          status
+        }
+        wallets
+      }
+    }
+  }
+}

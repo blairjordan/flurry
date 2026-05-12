@@ -1,0 +1,5 @@
+mutation InsertMessage($message: String!, $targetPlayerId: BigInt) {
+  insertMessage(input: { message: $message, targetPlayerId: $targetPlayerId }) {
+    clientMutationId
+  }
+}

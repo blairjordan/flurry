@@ -1,0 +1,23 @@
+FROM node:21-alpine AS build
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY pnpm-workspace.yaml pnpm-lock.yaml ./
+COPY api/package.json ./api/
+COPY api/tsconfig.json ./api/
+COPY api ./api/
+
+WORKDIR /app/api
+RUN pnpm install --force
+RUN pnpm run build
+
+FROM node:21-alpine AS app
+WORKDIR /app
+
+COPY --from=build /app/api/dist ./dist
+COPY --from=build /app/api/package.json ./
+RUN npm install --omit=dev
+
+EXPOSE 3000
+CMD ["node", "dist/index.js"]

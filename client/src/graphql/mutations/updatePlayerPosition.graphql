@@ -1,0 +1,9 @@
+mutation UpdatePlayerPosition($id: BigInt!, $position: JSON!) {
+  updatePlayer(input: { patch: { position: $position }, id: $id }) {
+    player {
+      nodeId
+      id
+      position
+    }
+  }
+}

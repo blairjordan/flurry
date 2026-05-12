@@ -1,0 +1,10 @@
+/assets/
+!/client/public/assets/
+client/public/tiles/
+node_modules/
+.pnpm-store/
+.env
+.next/
+dist/
+build/
+coverage/
