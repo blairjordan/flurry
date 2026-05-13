@@ -42,6 +42,10 @@ The API also serves schema SDL at `/schema.graphql`.
 
 1. Copy `.env.example` to `.env` and set any values you need.
 
+For any agent-generated review or signing links, set `VITE_APP_BASE_URL` to the
+canonical browser app origin. If you serve the homepage separately, keep
+`NEXT_PUBLIC_APP_URL` aligned with the same value.
+
 1. Start the stack:
 
 ```sh

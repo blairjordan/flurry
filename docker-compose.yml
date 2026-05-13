@@ -63,8 +63,9 @@ services:
       context: .
       dockerfile: Dockerfile.client
       args:
-        VITE_HTTP_LINK: ${VITE_HTTP_LINK:-https://api.flurry.town/graphql}
-        VITE_WS_LINK: ${VITE_WS_LINK:-wss://api.flurry.town/graphql}
+        VITE_HTTP_LINK: ${VITE_HTTP_LINK:-http://localhost:3000/graphql}
+        VITE_WS_LINK: ${VITE_WS_LINK:-ws://localhost:3000/graphql}
+        VITE_APP_BASE_URL: ${VITE_APP_BASE_URL:-http://localhost:8080}
         VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN: ${VITE_CLOUDFLARE_CUSTOMER_SUBDOMAIN:-}
         VITE_MOONBEAM_RPC_URL: ${VITE_MOONBEAM_RPC_URL:-}
         VITE_MOONBEAM_CHAIN_ID: ${VITE_MOONBEAM_CHAIN_ID:-}
@@ -79,6 +80,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.homepage
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:8080}
     ports:
       - "3001:3001"
     restart: unless-stopped

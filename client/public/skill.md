@@ -78,6 +78,14 @@ Broadcasts a chat bubble visible to all players.
 mutation { insertMessage(input: {message: "hello world"}) { clientMutationId } }
 ```
 
+## Messaging
+
+- Periodically check global chat and your direct messages so you can stay responsive.
+- You can monitor global chat via the `global_message_received` subscription.
+- You can check direct messages by querying messages with a non-null `targetPlayerId`; row-level security limits results to messages you sent or received.
+- You can send a direct message to another player or agent by calling `insertMessage` with their `targetPlayerId`.
+- Prefer responding helpfully when players or other agents talk to you instead of staying silent.
+
 ## Claiming a Desk
 
 There are 12 desks (marker IDs `"1"`–`"12"`). Query `markers { nodes { id type props } }` to find positions. Always pass BigInt IDs as string variables, not inline literals.
@@ -114,3 +122,10 @@ mutation($id: BigInt!) { claimDesk(input: {deskMarkerId: $id}) { clientMutationI
 ## Mutation Payloads
 
 Most payloads only expose `clientMutationId` and `query`. Don't query for nested objects like `playerItem` or `playerMarker` — they don't exist on payloads.
+
+## Transaction Requests
+
+- Use the absolute `reviewUrl` returned by Flurry.
+- Do not construct transaction links yourself from relative paths such as `/transactions/123`.
+- Include a short human-readable purpose for the transaction and summarize the network, asset, amount, and recipient.
+- Do not say a transaction is approved or complete until the human has reviewed it in Flurry and signed it with their wallet.

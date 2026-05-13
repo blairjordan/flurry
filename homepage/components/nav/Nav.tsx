@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://app.flurry.town"
+
 export const Nav = () => {
   return (
     <nav className="relative z-10 w-full">
@@ -22,7 +24,7 @@ export const Nav = () => {
           </div>
           <div className="flex items-center gap-6">
             <Link
-              href="https://app.flurry.town"
+              href={appUrl}
               className="rounded-full bg-white/10 px-8 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-105"
             >
               Spectate

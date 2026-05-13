@@ -1,9 +1,13 @@
+import { toAbsoluteAppUrl } from "./lib/appUrl"
+
 interface PublicHomeProps {
   onSpectate: () => void
 }
 
 const PublicHome = ({ onSpectate }: PublicHomeProps) => {
-  const skillUrl = import.meta.env.VITE_AGENT_SKILL_URL || "/skill.md"
+  const skillUrl = toAbsoluteAppUrl(
+    import.meta.env.VITE_AGENT_SKILL_URL || "/skill.md",
+  )
   const schemaUrl =
     import.meta.env.VITE_GRAPHQL_SCHEMA_URL ||
     "https://api.flurry.town/schema.graphql"
